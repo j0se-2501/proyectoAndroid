@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:columnCount="2"
+    android:padding="16dp"
+    android:rowCount="10">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="194dp"
+        android:layout_height="177dp"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:layout_gravity="center"
+        android:src="@drawable/logopng" />
+
+    <TextView
+        android:id="@+id/register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:layout_gravity="start"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-black"
+        android:text="REGISTRARSE"
+        android:textColor="#000000"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/textemail2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="2"
+        android:layout_column="0"
+        android:layout_marginTop="28dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Email"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/email2"
+        style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_row="3"
+        android:layout_column="0"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:hint="tucorreo@gmail.com"
+        android:inputType="textEmailAddress" />
+
+    <TextView
+        android:id="@+id/textcontraseña2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="4"
+        android:layout_column="0"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Contraseña"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/contraseña2"
+        style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_row="5"
+        android:layout_column="0"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="tu contraseña"
+        android:inputType="textPassword" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/registrarse"
+        android:layout_width="244dp"
+        android:layout_height="51dp"
+        android:layout_row="6"
+        android:layout_column="0"
+        android:layout_gravity="center"
+        android:layout_marginTop="6dp"
+        android:background="#FF000000"
+        android:backgroundTint="@null"
+        android:text="REGISTRARSE"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/sitienes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="8"
+        android:layout_column="0"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-black"
+        android:text="¿Ya tienes cuenta?"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/loguearseregister"
+        android:layout_width="244dp"
+        android:layout_height="51dp"
+        android:layout_row="9"
+        android:layout_column="0"
+        android:layout_gravity="center"
+        android:layout_marginTop="0dp"
+        android:text="LOGUEARSE"
+        android:textColor="#FFFFFF"
+        android:background="#FF000000"
+        android:backgroundTint="@null"/>
+
+</GridLayout>

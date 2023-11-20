@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textViewModificarProducto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Ingrese el ID del producto a modificar:"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/editTextProductoId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewModificarProducto"
+        android:layout_marginBottom="16dp"
+        android:hint="ID del producto"
+        android:inputType="number"
+        android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/editTextNuevoNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextProductoId"
+        android:layout_marginBottom="16dp"
+        android:hint="Nuevo nombre"
+        android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/editTextNuevaDescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextNuevoNombre"
+        android:layout_marginBottom="16dp"
+        android:hint="Nueva descripción"
+        android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/editTextNuevoPrecio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextNuevaDescripcion"
+        android:layout_marginBottom="16dp"
+        android:hint="Nuevo precio"
+        android:inputType="numberDecimal"
+        android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/editTextNuevoStock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextNuevoPrecio"
+        android:layout_marginBottom="16dp"
+        android:hint="Nuevo stock"
+        android:inputType="number"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/btnModificarProducto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Modificar Producto"
+        android:layout_below="@id/editTextNuevoStock"
+        android:layout_marginTop="16dp"/>
+
+</RelativeLayout>

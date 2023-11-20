@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textViewAgregarProducto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Ingrese los datos del nuevo producto:"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/editTextNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewAgregarProducto"
+        android:layout_marginBottom="16dp"
+        android:hint="Nombre del producto"
+        android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/editTextDescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextNombre"
+        android:layout_marginBottom="16dp"
+        android:hint="Descripción"
+        android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/editTextPrecio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextDescripcion"
+        android:layout_marginBottom="16dp"
+        android:hint="Precio"
+        android:inputType="numberDecimal"
+        android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/editTextStock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextPrecio"
+        android:layout_marginBottom="16dp"
+        android:hint="Stock"
+        android:inputType="number"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/btnAgregarProducto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Agregar Producto"
+        android:layout_below="@id/editTextStock"
+        android:layout_marginTop="16dp"/>
+
+</RelativeLayout>
