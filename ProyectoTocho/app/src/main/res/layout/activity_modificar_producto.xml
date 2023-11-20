@@ -1,72 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     android:padding="16dp">
 
     <TextView
         android:id="@+id/textViewModificarProducto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:fontFamily="sans-serif-black"
         android:text="Ingrese el ID del producto a modificar:"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp" />
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextProductoId"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textViewModificarProducto"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="64dp"
         android:hint="ID del producto"
         android:inputType="number"
-        android:textColor="#FFFFFF" />
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewModificarProducto" />
 
     <EditText
         android:id="@+id/editTextNuevoNombre"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextProductoId"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="64dp"
         android:hint="Nuevo nombre"
-        android:textColor="#FFFFFF" />
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextProductoId" />
 
     <EditText
         android:id="@+id/editTextNuevaDescripcion"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextNuevoNombre"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="64dp"
         android:hint="Nueva descripción"
-        android:textColor="#FFFFFF" />
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextNuevoNombre" />
 
     <EditText
         android:id="@+id/editTextNuevoPrecio"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextNuevaDescripcion"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="64dp"
         android:hint="Nuevo precio"
         android:inputType="numberDecimal"
-        android:textColor="#FFFFFF" />
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextNuevaDescripcion" />
 
     <EditText
         android:id="@+id/editTextNuevoStock"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextNuevoPrecio"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="64dp"
         android:hint="Nuevo stock"
         android:inputType="number"
-        android:textColor="#FFFFFF" />
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextNuevoPrecio" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
+
         android:id="@+id/btnModificarProducto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="92dp"
+        android:layout_marginTop="48dp"
+        android:backgroundTint="#000000"
         android:text="Modificar Producto"
-        android:layout_below="@id/editTextNuevoStock"
-        android:layout_marginTop="16dp"/>
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.968"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextNuevoStock" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,7 @@ import android.database.SQLException;
 
 
 public class DbHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "basededatos1";
+    private static final String DATABASE_NAME = "basededatos10";
     private static final int DATABASE_VERSION = 1;
 
     public DbHelper(Context context) {
