@@ -15,6 +15,8 @@ public class AgregarProductoActivity extends AppCompatActivity {
     private EditText editTextPrecio;
     private EditText editTextStock;
 
+    private EditText editTextImagenUrl;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +26,7 @@ public class AgregarProductoActivity extends AppCompatActivity {
         editTextDescripcion = findViewById(R.id.editTextDescripcion);
         editTextPrecio = findViewById(R.id.editTextPrecio);
         editTextStock = findViewById(R.id.editTextStock);
+        editTextImagenUrl = findViewById(R.id.editTextImagenUrl); // Nueva referencia al campo de entrada de URL
         Button btnAgregarProducto = findViewById(R.id.btnAgregarProducto);
 
         btnAgregarProducto.setOnClickListener(v -> agregarProducto());
@@ -39,6 +42,7 @@ public class AgregarProductoActivity extends AppCompatActivity {
         String descripcion = editTextDescripcion.getText().toString();
        String  precio = editTextPrecio.getText().toString();
         int stock;
+        String imagenUrl = editTextImagenUrl.getText().toString();
 
         try {
             // Intenta convertir el texto del precio a un número decimal
@@ -59,7 +63,7 @@ public class AgregarProductoActivity extends AppCompatActivity {
         values.put("descripcion", descripcion);
         values.put("precio", precio);  // Asegúrate de que el formato del precio sea válido
         values.put("stock", stock);
-
+        values.put("imagen_url", imagenUrl);
         // Inserta el nuevo producto en la tabla "piezas"
         long newRowId = db.insert("piezas", null, values);
 
