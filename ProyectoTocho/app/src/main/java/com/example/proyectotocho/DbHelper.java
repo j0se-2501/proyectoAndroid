@@ -29,7 +29,7 @@ public class DbHelper extends SQLiteOpenHelper {
             e.printStackTrace();
         }
     }
-
+/////jajajaajjajaajjaja
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Aquí puedes manejar la actualización de la base de datos si es necesario.
