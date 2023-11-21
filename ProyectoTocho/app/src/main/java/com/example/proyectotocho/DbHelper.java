@@ -23,8 +23,8 @@ public class DbHelper extends SQLiteOpenHelper {
             // Crear la tabla usuarios
             db.execSQL("CREATE TABLE IF NOT EXISTS usuarios (id INTEGER PRIMARY KEY, correo TEXT UNIQUE, contraseña TEXT)");
 
-            // Crear la tabla piezas
-            db.execSQL("CREATE TABLE IF NOT EXISTS piezas (id INTEGER PRIMARY KEY, nombre TEXT, descripcion TEXT, precio REAL, stock INTEGER)");
+            // Crear la tabla piezas con el campo de imagen
+            db.execSQL("CREATE TABLE IF NOT EXISTS piezas (id INTEGER PRIMARY KEY, nombre TEXT, descripcion TEXT, precio REAL, stock INTEGER, imagen_url TEXT)");
         } catch (SQLException e) {
             e.printStackTrace();
         }
