@@ -25,6 +25,8 @@ public class DbHelper extends SQLiteOpenHelper {
 
             // Crear la tabla piezas
             db.execSQL("CREATE TABLE IF NOT EXISTS piezas (id INTEGER PRIMARY KEY, nombre TEXT, descripcion TEXT, precio REAL, stock INTEGER)");
+
+            db.execSQL("INSERT INTO usuarios (correo, contraseña) VALUES ('admin@admin.com', 'admin')");
         } catch (SQLException e) {
             e.printStackTrace();
         }
