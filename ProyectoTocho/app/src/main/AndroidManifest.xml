@@ -32,6 +32,18 @@
             android:name=".AdminProductosActivity"
             android:exported="false" />
         <activity
+            android:name=".EliminarClienteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ModificarClienteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AgregarClienteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MostarrClienteActivity"
+            android:exported="false" />
+        <activity
             android:name=".AdminActivity"
             android:exported="false" />
         <activity
