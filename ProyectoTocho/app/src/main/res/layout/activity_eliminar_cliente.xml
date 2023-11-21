@@ -4,6 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:padding="16dp"
     tools:context=".EliminarClienteActivity">
+
+    <TextView
+        android:id="@+id/textViewEliminarCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="Ingrese el ID del usuario a eliminar:"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextClienteId"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:hint="ID del usuario"
+        android:inputType="number"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.812"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewEliminarCliente" />
+
+    <androidx.appcompat.widget.AppCompatButton
+
+        android:id="@+id/btnEliminarCliente"
+        android:layout_width="0dp"
+        android:layout_height="92dp"
+        android:layout_marginTop="64dp"
+        android:backgroundTint="#000000"
+        android:text="Eliminar Usuario"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextClienteId" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
