@@ -3,10 +3,7 @@ package com.example.proyectotocho;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -47,35 +44,26 @@ public class MainActivity extends AppCompatActivity {
                 if (correo.isEmpty() || contraseña.isEmpty()) {
                     Toast.makeText(MainActivity.this, "Por favor, complete todos los campos", Toast.LENGTH_LONG).show();
                 } else {
-                    DbHelper dbHelper = new DbHelper(MainActivity.this);
-                    SQLiteDatabase db = dbHelper.getWritableDatabase();
-
-                    // Verificar si el usuario no es admin
-                    if (!esAdmin(correo, contraseña, db)) {
+                    // Verificar si el usuario es admin
+                    if (esAdmin(correo, contraseña)) {
+                        // Si el usuario es admin, iniciar AdminActivity
+                        Intent adminIntent = new Intent(MainActivity.this, AdminActivity.class);
+                        startActivity(adminIntent);
+                    } else {
                         // Si el usuario no es admin, iniciar UserActivity
                         Intent userIntent = new Intent(MainActivity.this, UserActivity.class);
                         userIntent.putExtra("USER_EMAIL", correo);
                         startActivity(userIntent);
-                    } else {
-                        // Si el usuario es admin, iniciar AdminActivity
-                        Intent UserIntent = new Intent(MainActivity.this, UserActivity.class);
-                        startActivity(UserIntent);
                     }
-
-                    db.close();
                 }
             }
         });
     }
 
-    private boolean esAdmin(String correo, String contraseña, SQLiteDatabase db) {
-        String validacionAdmin = "correo=? AND contraseña=?";
-        String[] selectionArgs = { "admin@admin.com", "admin" };
+    private boolean esAdmin(String correo, String contraseña) {
+        String correoAdmin = "admin@admin.com";
+        String contraseñaAdmin = "admin";
 
-        Cursor adminCursor = db.query("usuarios", null, validacionAdmin, selectionArgs, null, null, null);
-        int count = adminCursor.getCount();
-        adminCursor.close();
-
-        return count > 0;
+        return correo.equals(correoAdmin) && contraseña.equals(contraseñaAdmin);
     }
 }
