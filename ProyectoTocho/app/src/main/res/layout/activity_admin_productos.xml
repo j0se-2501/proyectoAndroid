@@ -1,16 +1,17 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF">
-    <!--skdfhldshjkf-->
-
+    <!--uwuwuw-->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/Anadir"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="288dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="240dp"
         android:layout_marginBottom="8dp"
+        android:layout_centerHorizontal="true"
         android:backgroundTint="#000000"
         android:text="Añadir Producto"
         android:textAllCaps="false"
@@ -18,45 +19,14 @@
         android:textSize="25dp"
         app:layout_constraintBottom_toTopOf="@+id/Modificar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.56"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/Modificar"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:backgroundTint="#000000"
-        android:text="Modificar Producto"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/Eliminar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Anadir" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/Eliminar"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:backgroundTint="#000000"
-        android:text="Eliminar Producto"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/mostrarProductos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Modificar" />
-
-    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/mostrarProductos"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="288dp"
+        android:layout_height="60dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="#000000"
@@ -66,13 +36,48 @@
         android:textSize="25dp"
         app:layout_constraintBottom_toTopOf="@+id/salir"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.569"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Eliminar" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/Eliminar"
+        android:layout_width="288dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="#000000"
+        android:text="Eliminar Producto"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/mostrarProductos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.569"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Modificar" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/Modificar"
+        android:layout_width="288dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="#000000"
+        android:text="Modificar Producto"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/Eliminar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.569"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Anadir" />
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/salir"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="288dp"
+        android:layout_height="60dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="#000000"
@@ -82,7 +87,41 @@
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.56"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mostrarProductos" />
+
+    <ImageView
+        android:id="@+id/Imagen_logo"
+        android:layout_width="302dp"
+        android:layout_height="211dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <ImageView
+        android:id="@+id/imagen_fondo_silueta"
+        android:layout_width="424dp"
+        android:layout_height="603dp"
+        android:alpha="0.15"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Imagen_logo"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/Txt_barrita"
+        android:layout_width="449dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="221dp"
+        android:text="________________________________________________________________________________________________________________"
+        app:layout_constraintBottom_toTopOf="@+id/Anadir"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Imagen_logo"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

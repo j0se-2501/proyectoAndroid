@@ -7,5 +7,3 @@
     tools:context=".AgregarClienteActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!---comentario para actualizar ramas->
