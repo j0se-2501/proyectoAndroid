@@ -14,87 +14,68 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-private Button registrarboton;
-private Button login;
+
+    private Button registrarboton;
+    private Button login;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         EditText correologin = findViewById(R.id.emaillogin);
         EditText contraseñalogin = findViewById(R.id.contraseñalogin);
-        registrarboton= findViewById(R.id.registarselogin);
-        login= findViewById(R.id.entrar);
+        registrarboton = findViewById(R.id.registarselogin);
+        login = findViewById(R.id.entrar);
+
         getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.color_notif_bar));
 
-        //Aqui hacemos que el boton de registrarse nos abra la otra activity
         registrarboton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(MainActivity.this, Register.class);
                 startActivity(intent);
-
             }
         });
 
-        //Aqui añadimos el listener de el boton de login y que nos valide si el usuario existe
-login.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        String correo = correologin.getText().toString();
-        String contraseña = contraseñalogin.getText().toString();
-        if (correo.isEmpty() || contraseña.isEmpty()) {
-            Toast.makeText(MainActivity.this, "Por favor, complete todos los campos", Toast.LENGTH_LONG).show();
-        }else {
-            //Realizamos una consulta a la base de datos
-            DbHelper dbHelper = new DbHelper(MainActivity.this);
-            SQLiteDatabase db = dbHelper.getWritableDatabase();
-            String selection = "correo = ? AND contraseña = ?";
-            String[] selectionArgs = { correo, contraseña };
-            Cursor cursor = db.query("usuarios", null, selection, selectionArgs, null, null, null);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String correo = correologin.getText().toString();
+                String contraseña = contraseñalogin.getText().toString();
 
-            int rowCount = cursor.getCount();
+                if (correo.isEmpty() || contraseña.isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Por favor, complete todos los campos", Toast.LENGTH_LONG).show();
+                } else {
+                    DbHelper dbHelper = new DbHelper(MainActivity.this);
+                    SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-            cursor.close();
-            db.close();
-            if (rowCount <= 0) {
-                //En el caso de que el usuario introducido no exista se ejecutara esta linea
+                    // Verificar si el usuario no es admin
+                    if (!esAdmin(correo, contraseña, db)) {
+                        // Si el usuario no es admin, iniciar UserActivity
+                        Intent userIntent = new Intent(MainActivity.this, UserActivity.class);
+                        userIntent.putExtra("USER_EMAIL", correo);
+                        startActivity(userIntent);
+                    } else {
+                        // Si el usuario es admin, iniciar AdminActivity
+                        Intent UserIntent = new Intent(MainActivity.this, UserActivity.class);
+                        startActivity(UserIntent);
+                    }
 
-                Toast.makeText(getApplicationContext(), "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
-
-            }else{
-                Toast.makeText(getApplicationContext(), "Sesion iniciada", Toast.LENGTH_SHORT).show();
-                if(correo.equals("admin@admin.com" )  && contraseña.equals("admin")){
-
-                    Intent intent = new Intent(MainActivity.this, AdminActivity.class);
-
-                    startActivity(intent);
-
-
+                    db.close();
                 }
             }
-            String validacionAdmin="correo= admin@admin.com AND contraseña= admin";
-            Cursor AdminValidar = db.query("usuarios", null, validacionAdmin, selectionArgs, null, null, null);
-            int Count = AdminValidar.getCount();
+        });
+    }
 
-            if (Count <= 0) {
+    private boolean esAdmin(String correo, String contraseña, SQLiteDatabase db) {
+        String validacionAdmin = "correo=? AND contraseña=?";
+        String[] selectionArgs = { "admin@admin.com", "admin" };
 
+        Cursor adminCursor = db.query("usuarios", null, validacionAdmin, selectionArgs, null, null, null);
+        int count = adminCursor.getCount();
+        adminCursor.close();
 
-            }else{
-                Toast.makeText(getApplicationContext(), "Sesion iniciada como admin", Toast.LENGTH_SHORT).show();
-
-
-                    Intent intent = new Intent(MainActivity.this, AdminActivity.class);
-
-                startActivity(intent);
-
-
-
-            }
-        }
-        }
-});
-
-
+        return count > 0;
     }
 }
