@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 public class MostarrClienteActivity extends AppCompatActivity {
 
+    //comentario para actualizar
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
