@@ -14,7 +14,7 @@ public class AgregarProductoActivity extends AppCompatActivity {
     private EditText editTextDescripcion;
     private EditText editTextPrecio;
     private EditText editTextStock;
-
+    private EditText editTextidcategoria;
     private EditText editTextImagenUrl;
 
     @Override
@@ -26,7 +26,8 @@ public class AgregarProductoActivity extends AppCompatActivity {
         editTextDescripcion = findViewById(R.id.editTextDescripcion);
         editTextPrecio = findViewById(R.id.editTextPrecio);
         editTextStock = findViewById(R.id.editTextStock);
-        editTextImagenUrl = findViewById(R.id.editTextImagenUrl); // Nueva referencia al campo de entrada de URL
+        editTextImagenUrl = findViewById(R.id.editTextImagenUrl);
+        editTextidcategoria =findViewById(R.id.editTextidcategoria);
         Button btnAgregarProducto = findViewById(R.id.btnAgregarProducto);
 
         btnAgregarProducto.setOnClickListener(v -> agregarProducto());
@@ -41,6 +42,7 @@ public class AgregarProductoActivity extends AppCompatActivity {
         String nombre = editTextNombre.getText().toString();
         String descripcion = editTextDescripcion.getText().toString();
        String  precio = editTextPrecio.getText().toString();
+        String  categoria_id = editTextidcategoria.getText().toString();
         int stock;
         String imagenUrl = editTextImagenUrl.getText().toString();
 
@@ -61,9 +63,10 @@ public class AgregarProductoActivity extends AppCompatActivity {
         ContentValues values = new ContentValues();
         values.put("nombre", nombre);
         values.put("descripcion", descripcion);
-        values.put("precio", precio);  // Asegúrate de que el formato del precio sea válido
+        values.put("precio", precio);
         values.put("stock", stock);
         values.put("imagen_url", imagenUrl);
+        values.put("categoria_id", categoria_id);
         // Inserta el nuevo producto en la tabla "piezas"
         long newRowId = db.insert("piezas", null, values);
 

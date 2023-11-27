@@ -20,11 +20,14 @@ public class DbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         try {
-            // Crear la tabla usuarios
-            db.execSQL("CREATE TABLE IF NOT EXISTS usuarios (id INTEGER PRIMARY KEY, correo TEXT UNIQUE, contraseña TEXT)");
+            db.execSQL("CREATE TABLE IF NOT EXISTS categorias (id INTEGER PRIMARY KEY, nombre TEXT UNIQUE)");
 
+            db.execSQL("CREATE TABLE IF NOT EXISTS usuarios (id INTEGER PRIMARY KEY, correo TEXT UNIQUE, contraseña TEXT)");
+            db.execSQL("INSERT INTO categorias (id, nombre) VALUES ('1', 'neumaticos')");
+            db.execSQL("INSERT INTO categorias (id, nombre) VALUES ('2', 'suspension')");
+            db.execSQL("INSERT INTO categorias (id, nombre) VALUES ('3', 'frenos')");
             db.execSQL("INSERT INTO usuarios (correo, contraseña) VALUES ('admin@admin.com', 'admin')");
-            db.execSQL("CREATE TABLE IF NOT EXISTS piezas (id INTEGER PRIMARY KEY, nombre TEXT, descripcion TEXT, precio REAL, stock INTEGER, imagen_url TEXT)");
+            db.execSQL("CREATE TABLE IF NOT EXISTS piezas (id INTEGER PRIMARY KEY, nombre TEXT, descripcion TEXT, precio REAL, stock INTEGER, imagen_url TEXT, categoria_id INTEGER, FOREIGN KEY (categoria_id) REFERENCES categorias(id))");
         } catch (SQLException e) {
             e.printStackTrace();
         }
