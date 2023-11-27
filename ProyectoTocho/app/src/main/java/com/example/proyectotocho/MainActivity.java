@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button registrarboton;
     private Button login;
-
+    private Button invitadoboton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         EditText contraseñalogin = findViewById(R.id.contraseñalogin);
         registrarboton = findViewById(R.id.registarselogin);
         login = findViewById(R.id.entrar);
-
+        invitadoboton=findViewById(R.id.invitado);
         getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.color_notif_bar));
 
         registrarboton.setOnClickListener(new View.OnClickListener() {
@@ -34,7 +34,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        invitadoboton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, InvitadoActivity.class);
+                startActivity(intent);
+            }
+        });
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
