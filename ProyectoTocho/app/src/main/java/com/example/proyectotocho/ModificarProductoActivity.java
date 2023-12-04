@@ -18,6 +18,8 @@ public class ModificarProductoActivity extends AppCompatActivity {
     private EditText editTextNuevaDescripcion;
     private EditText editTextNuevoPrecio;
     private EditText editTextNuevoStock;
+    private EditText editTextIdCategoria;
+    private EditText editTextImagenUrl;
     private Button btnModificarProducto;
 
     @Override
@@ -30,6 +32,8 @@ public class ModificarProductoActivity extends AppCompatActivity {
         editTextNuevaDescripcion = findViewById(R.id.editTextNuevaDescripcion);
         editTextNuevoPrecio = findViewById(R.id.editTextNuevoPrecio);
         editTextNuevoStock = findViewById(R.id.editTextNuevoStock);
+        editTextIdCategoria = findViewById(R.id.editTextIdCategoria);
+        editTextImagenUrl = findViewById(R.id.editTextImagenUrl);
         btnModificarProducto = findViewById(R.id.btnModificarProducto);
 
         btnModificarProducto.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +49,8 @@ public class ModificarProductoActivity extends AppCompatActivity {
         String productoIdStr = editTextProductoId.getText().toString();
         String nuevoNombre = editTextNuevoNombre.getText().toString();
         String nuevaDescripcion = editTextNuevaDescripcion.getText().toString();
+        String nuevaCategoria = editTextIdCategoria.getText().toString();
+        String nuevaImagen = editTextImagenUrl.getText().toString();
         double nuevoPrecio = Double.parseDouble(editTextNuevoPrecio.getText().toString());
         int nuevoStock = Integer.parseInt(editTextNuevoStock.getText().toString());
 
@@ -73,6 +79,8 @@ public class ModificarProductoActivity extends AppCompatActivity {
             if (!nuevaDescripcion.isEmpty()) values.put("descripcion", nuevaDescripcion);
             values.put("precio", nuevoPrecio);
             values.put("stock", nuevoStock);
+            if (!nuevaImagen.isEmpty()) values.put("imagen_url", nuevaImagen);
+            if (!nuevaCategoria.isEmpty()) values.put("categoria_id", nuevaCategoria);
 
             // Realiza la actualización del producto
             int numRowsUpdated = db.update("piezas", values, "id=?", new String[]{String.valueOf(productoId)});
