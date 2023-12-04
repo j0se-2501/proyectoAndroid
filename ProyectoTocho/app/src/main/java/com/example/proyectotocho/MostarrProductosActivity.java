@@ -42,7 +42,7 @@ public class MostarrProductosActivity extends AppCompatActivity {
                 int idIndex = cursor.getColumnIndex("id");
                 int nombreIndex = cursor.getColumnIndex("nombre");
                 int precioIndex = cursor.getColumnIndex("precio");
-
+                int categoriaindex =cursor.getColumnIndex("categoria_id");
                 ArrayList<String> productosList = new ArrayList<>();
                 while (cursor.moveToNext()) {
                     // Verify if the columns exist in the result set
@@ -50,9 +50,9 @@ public class MostarrProductosActivity extends AppCompatActivity {
                         int id = cursor.getInt(idIndex);
                         String nombre = cursor.getString(nombreIndex);
                         double precio = cursor.getDouble(precioIndex);
-
+                        int categoria=cursor.getInt(categoriaindex);
                         // Add product information to the list
-                        productosList.add("ID: " + id + ", Nombre: " + nombre + ", Precio: $" + precio);
+                        productosList.add("ID: " + id + ", Nombre: " + nombre + ", Precio: $" + precio + ", Categoria: "+ categoria);
                     } else {
                         // Show an error message if any column doesn't exist
                         Toast.makeText(this, "Error obtaining data from the database", Toast.LENGTH_SHORT).show();
