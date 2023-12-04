@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:padding="16dp">
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
@@ -24,7 +29,7 @@
         android:id="@+id/editTextProductoId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="8dp"
         android:hint="ID del producto"
         android:inputType="number"
         android:textColor="#000000"
@@ -32,88 +37,187 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewModificarProducto" />
 
+    <androidx.appcompat.widget.AppCompatButton
+
+        android:id="@+id/btnBuscarProducto"
+        android:layout_width="375dp"
+        android:layout_height="74dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#000000"
+        android:text="Buscar Producto"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextProductoId" />
+
+
+    <TextView
+        android:id="@+id/textViewNuevoNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Nuevo nombre:"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnBuscarProducto" />
+
     <EditText
         android:id="@+id/editTextNuevoNombre"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="4dp"
         android:hint="Nuevo nombre"
         android:textColor="#000000"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.562"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextProductoId" />
+        app:layout_constraintTop_toBottomOf="@id/textViewNuevoNombre" />
 
-    <EditText
-        android:id="@+id/editTextNuevaDescripcion"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/textViewNuevaDescripcion"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:hint="Nueva descripción"
-        android:textColor="#000000"
+        android:text="Nueva descripción:"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editTextNuevoNombre" />
 
     <EditText
+        android:id="@+id/editTextNuevaDescripcion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:hint="Nueva descripción"
+        android:textColor="#000000"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewNuevaDescripcion" />
+
+    <TextView
+        android:id="@+id/textViewNuevoPrecio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Nuevo precio:"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextNuevaDescripcion" />
+
+    <EditText
         android:id="@+id/editTextNuevoPrecio"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="4dp"
         android:hint="Nuevo precio"
         android:inputType="numberDecimal"
         android:textColor="#000000"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.562"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextNuevaDescripcion" />
+        app:layout_constraintTop_toBottomOf="@id/textViewNuevoPrecio" />
+
+    <TextView
+        android:id="@+id/textViewNuevoStock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Nuevo stock:"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextNuevoPrecio" />
 
     <EditText
         android:id="@+id/editTextNuevoStock"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="4dp"
         android:hint="Nuevo stock"
         android:inputType="number"
         android:textColor="#000000"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextNuevoPrecio" />
+        app:layout_constraintTop_toBottomOf="@id/textViewNuevoStock" />
 
+    <TextView
+        android:id="@+id/textViewNuevaCategoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Nueva categoría:"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextNuevoStock" />
 
     <EditText
         android:id="@+id/editTextIdCategoria"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="4dp"
         android:hint="Nueva categoría"
         android:inputType="number"
         android:textColor="#000000"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.562"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextNuevoStock" />
+        app:layout_constraintTop_toBottomOf="@id/textViewNuevaCategoria" />
+
+    <TextView
+        android:id="@+id/textViewNuevaImagen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Nueva imagen:"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextIdCategoria" />
 
     <EditText
         android:id="@+id/editTextImagenUrl"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="8dp"
         android:hint="URL de la imagen"
         android:textColor="#000000"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.031"
+        app:layout_constraintHorizontal_bias="0.562"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextIdCategoria" />
+        app:layout_constraintTop_toBottomOf="@id/textViewNuevaImagen" />
 
     <androidx.appcompat.widget.AppCompatButton
 
         android:id="@+id/btnModificarProducto"
         android:layout_width="0dp"
         android:layout_height="92dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="#000000"
         android:text="Modificar Producto"
         android:textColor="#FFFFFF"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editTextImagenUrl" />
 
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
