@@ -118,10 +118,10 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/llantas2Button"
+        android:id="@+id/electronicaButton"
         android:layout_width="179dp"
         android:layout_height="76dp"
-        android:text="llantas2Button"
+        android:text="electronicaButton"
         app:layout_constraintBottom_toTopOf="@+id/neumaticosButton"
         app:layout_constraintEnd_toStartOf="@+id/transmisionButton"
         app:layout_constraintHorizontal_bias="0.378"
