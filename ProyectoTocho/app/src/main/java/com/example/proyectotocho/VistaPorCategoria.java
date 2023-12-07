@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import com.example.proyectotocho.DbHelper;
+import com.example.proyectotocho.Producto;
+import com.example.proyectotocho.ProductoAdapter;
+import com.example.proyectotocho.R;
 import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
@@ -17,6 +20,8 @@ public class VistaPorCategoria extends AppCompatActivity {
 
     private DbHelper dbHelper;
     private String categoriaSeleccionada;
+    private RecyclerView recyclerView;
+    private ProductoAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,37 +37,43 @@ public class VistaPorCategoria extends AppCompatActivity {
         // Mostrar la categoría en el título de la actividad
         setTitle("Piezas de " + categoriaSeleccionada);
 
-        // Obtener las piezas de la categoría seleccionada
-        List<String> piezas = obtenerPiezasPorCategoria(categoriaSeleccionada);
-
-        // Configurar el adaptador para la ListView
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, piezas);
-
-        // Configurar la ListView
-        ListView listView = findViewById(R.id.listView);
-        listView.setAdapter(adapter);
+        // Configurar el RecyclerView
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new ProductoAdapter(obtenerProductosPorCategoria(categoriaSeleccionada));
+        recyclerView.setAdapter(adapter);
     }
 
-    private List<String> obtenerPiezasPorCategoria(String categoria) {
-        List<String> piezas = new ArrayList<>();
+    private List<Producto> obtenerProductosPorCategoria(String categoria) {
+        List<Producto> productos = new ArrayList<>();
 
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         // Utilizamos el método rawQuery para realizar la consulta SQL
-        Cursor cursor = db.rawQuery("SELECT nombre FROM piezas WHERE categoria_id = (SELECT id FROM categorias WHERE nombre = ?)", new String[]{categoria});
+        Cursor cursor = db.rawQuery("SELECT * FROM piezas WHERE categoria_id = (SELECT id FROM categorias WHERE nombre = ?)", new String[]{categoria});
 
         // Verificamos si el cursor no es nulo y si hay al menos una columna
         if (cursor != null && cursor.getCount() > 0) {
             // Movemos el cursor a la primera fila
             cursor.moveToFirst();
 
-            // Obtenemos el índice de la columna "nombre"
-            int columnIndex = cursor.getColumnIndex("nombre");
+            // Obtenemos los índices de las columnas
+            int indexNombre = cursor.getColumnIndex("nombre");
+            int indexDescripcion = cursor.getColumnIndex("descripcion");
+            int indexPrecio = cursor.getColumnIndex("precio");
+            int indexStock = cursor.getColumnIndex("stock");
+            int indexImagenUrl = cursor.getColumnIndex("imagen_url");
 
-            // Recorremos el cursor y agregamos nombres de piezas a la lista
+            // Recorremos el cursor y agregamos productos a la lista
             do {
-                String nombrePieza = cursor.getString(columnIndex);
-                piezas.add(nombrePieza);
+                String nombre = cursor.getString(indexNombre);
+                String descripcion = cursor.getString(indexDescripcion);
+                String precio = cursor.getString(indexPrecio);
+                int stock = cursor.getInt(indexStock);
+                String imagenUrl = cursor.getString(indexImagenUrl);
+
+                Producto producto = new Producto(nombre, descripcion, precio, stock, imagenUrl);
+                productos.add(producto);
             } while (cursor.moveToNext());
 
             // Cerramos el cursor
@@ -72,7 +83,6 @@ public class VistaPorCategoria extends AppCompatActivity {
         // Cerramos la base de datos
         db.close();
 
-        return piezas;
+        return productos;
     }
-
 }
