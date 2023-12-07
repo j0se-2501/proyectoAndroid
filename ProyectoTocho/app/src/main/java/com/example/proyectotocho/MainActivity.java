@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         invitadoboton=findViewById(R.id.invitado);
         getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.color_notif_bar));
 
+
         registrarboton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

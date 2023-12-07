@@ -1,6 +1,7 @@
 package com.example.proyectotocho;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -27,7 +28,7 @@ public class ModificarClienteActivity extends AppCompatActivity {
         editTextNuevoCorreo = findViewById(R.id.editTextCorreo);
         editTextNuevaContrasenna = findViewById(R.id.editTextContrasena);
         btnModificarCliente = findViewById(R.id.btnModificarCliente);
-
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.color_notif_bar));
         btnModificarCliente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

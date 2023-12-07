@@ -1,6 +1,7 @@
 package com.example.proyectotocho;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
@@ -25,7 +26,7 @@ public class AgregarClienteActivity extends AppCompatActivity {
         editTextCorreo = findViewById(R.id.editTextCorreo);
         editTextContrasenna = findViewById(R.id.editTextContrasena);
         btnAgregarCliente = findViewById(R.id.btnAgregarCliente);
-
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.color_notif_bar));
         btnAgregarCliente.setOnClickListener(v -> agregarCliente());
 
     }

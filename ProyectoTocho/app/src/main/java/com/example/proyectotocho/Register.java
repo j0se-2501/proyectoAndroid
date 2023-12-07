@@ -1,6 +1,7 @@
 package com.example.proyectotocho;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.ContentValues;
 import android.content.Intent;
@@ -22,7 +23,7 @@ public class Register extends AppCompatActivity {
         botonloguear = findViewById(R.id.loguearseregister);
         EditText correoregister = findViewById(R.id.email2);
         EditText contraseñaregister = findViewById(R.id.contraseña2);
-
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.color_notif_bar));
         //Creamos la base de datos
         DbHelper dbhelper = new DbHelper(Register.this);
         SQLiteDatabase db = dbhelper.getWritableDatabase();

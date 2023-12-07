@@ -1,6 +1,7 @@
 package com.example.proyectotocho;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -21,7 +22,7 @@ public class EliminarClienteActivity extends AppCompatActivity {
 
         editTextUsuarioId = findViewById(R.id.editTextClienteId);
         btnEliminarUsuario = findViewById(R.id.btnEliminarCliente);
-
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.color_notif_bar));
         btnEliminarUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
