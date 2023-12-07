@@ -5,7 +5,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
+import android.widget.ArrayAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,7 +16,7 @@ public class AgregarProductoActivity extends AppCompatActivity {
     private EditText editTextDescripcion;
     private EditText editTextPrecio;
     private EditText editTextStock;
-    private EditText editTextIdCategoria;
+    private Spinner spinnerCategoria;
     private EditText editTextImagenUrl;
 
     @Override
@@ -27,7 +29,17 @@ public class AgregarProductoActivity extends AppCompatActivity {
         editTextPrecio = findViewById(R.id.editTextPrecio);
         editTextStock = findViewById(R.id.editTextStock);
         editTextImagenUrl = findViewById(R.id.editTextImagenUrl);
-        editTextIdCategoria =findViewById(R.id.editTextIdCategoria);
+        spinnerCategoria =findViewById(R.id.spinnerCategoria);
+
+        // Configurar el adaptador para el Spinner usando el array de categorías
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this,
+                R.array.categorias,
+                android.R.layout.simple_spinner_item
+        );
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCategoria.setAdapter(adapter);
+
         Button btnAgregarProducto = findViewById(R.id.btnAgregarProducto);
 
         btnAgregarProducto.setOnClickListener(v -> agregarProducto());
@@ -42,7 +54,7 @@ public class AgregarProductoActivity extends AppCompatActivity {
         String nombre = editTextNombre.getText().toString();
         String descripcion = editTextDescripcion.getText().toString();
         String precio = editTextPrecio.getText().toString();
-        String categoriaId = editTextIdCategoria.getText().toString();
+        String categoriaSeleccionada = spinnerCategoria.getSelectedItem().toString();
         int stock;
         String imagenUrl = editTextImagenUrl.getText().toString();
 
@@ -52,6 +64,15 @@ public class AgregarProductoActivity extends AppCompatActivity {
             stock = Integer.parseInt(editTextStock.getText().toString());
         } catch (NumberFormatException e) {
             Toast.makeText(this, "Ingrese un precio y stock válidos", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Extraer el número de la categoría
+        int categoriaId;
+        try {
+            categoriaId = Integer.parseInt(categoriaSeleccionada.split("\\.")[0].trim());
+        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+            Toast.makeText(this, "Error al obtener la categoría seleccionada", Toast.LENGTH_SHORT).show();
             return;
         }
 

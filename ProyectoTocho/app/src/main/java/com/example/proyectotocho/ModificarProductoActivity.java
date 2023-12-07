@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 public class ModificarProductoActivity extends AppCompatActivity {
     private EditText editTextProductoId;
@@ -21,7 +23,7 @@ public class ModificarProductoActivity extends AppCompatActivity {
     private EditText editTextNuevaDescripcion;
     private EditText editTextNuevoPrecio;
     private EditText editTextNuevoStock;
-    private EditText editTextIdCategoria;
+    private Spinner spinnerNuevaCategoria;
     private EditText editTextImagenUrl;
 
     private TextView textViewNuevoNombre;
@@ -50,10 +52,20 @@ public class ModificarProductoActivity extends AppCompatActivity {
         editTextNuevaDescripcion = findViewById(R.id.editTextNuevaDescripcion);
         editTextNuevoPrecio = findViewById(R.id.editTextNuevoPrecio);
         editTextNuevoStock = findViewById(R.id.editTextNuevoStock);
-        editTextIdCategoria = findViewById(R.id.editTextIdCategoria);
+        spinnerNuevaCategoria = findViewById(R.id.spinnerNuevaCategoria);
         editTextImagenUrl = findViewById(R.id.editTextImagenUrl);
         btnModificarProducto = findViewById(R.id.btnModificarProducto);
         btnBuscarProducto = findViewById(R.id.btnBuscarProducto);
+
+        // Configuración del Spinner con un ArrayAdapter
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this,
+                R.array.categorias,
+                android.R.layout.simple_spinner_item
+        );
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerNuevaCategoria.setAdapter(adapter);
 
         btnBuscarProducto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +80,7 @@ public class ModificarProductoActivity extends AppCompatActivity {
                 modificarProducto();
             }
         });
+
     }
 
     @SuppressLint("Range")
@@ -111,8 +124,8 @@ public class ModificarProductoActivity extends AppCompatActivity {
             editTextNuevoStock.setText(String.valueOf(cursor.getInt(cursor.getColumnIndex("stock"))));
 
             textViewNuevaCategoria.setVisibility(View.VISIBLE);
-            editTextIdCategoria.setVisibility(View.VISIBLE);
-            editTextIdCategoria.setText(cursor.getString(cursor.getColumnIndex("categoria_id")));
+            spinnerNuevaCategoria.setVisibility(View.VISIBLE);
+            spinnerNuevaCategoria.setSelection(cursor.getInt(cursor.getColumnIndex("categoria_id"))-1);
 
             textViewNuevaImagen.setVisibility(View.VISIBLE);
             editTextImagenUrl.setVisibility(View.VISIBLE);
@@ -136,7 +149,7 @@ public class ModificarProductoActivity extends AppCompatActivity {
         String productoIdStr = editTextProductoId.getText().toString();
         String nuevoNombre = editTextNuevoNombre.getText().toString();
         String nuevaDescripcion = editTextNuevaDescripcion.getText().toString();
-        String nuevaCategoria = editTextIdCategoria.getText().toString();
+        String nuevaCategoria = spinnerNuevaCategoria.getSelectedItem().toString();
         String nuevaImagen = editTextImagenUrl.getText().toString();
         double nuevoPrecio = Double.parseDouble(editTextNuevoPrecio.getText().toString());
         int nuevoStock = Integer.parseInt(editTextNuevoStock.getText().toString());
@@ -148,6 +161,14 @@ public class ModificarProductoActivity extends AppCompatActivity {
         }
 
         int productoId = Integer.parseInt(productoIdStr);
+
+        int categoriaId;
+        try {
+            categoriaId = Integer.parseInt(nuevaCategoria.split("\\.")[0].trim());
+        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+            Toast.makeText(this, "Error al obtener la categoría seleccionada", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         // Accede a la base de datos
         DbHelper dbHelper = new DbHelper(this);

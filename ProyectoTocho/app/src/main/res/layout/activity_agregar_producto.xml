@@ -12,6 +12,7 @@
         android:id="@+id/textViewAgregarProducto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
         android:fontFamily="sans-serif-black"
         android:text="Ingrese los datos del nuevo producto:"
         android:textColor="#000000"
@@ -24,7 +25,7 @@
         android:id="@+id/editTextNombre"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="36dp"
         android:hint="Nombre del producto"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,36 +73,37 @@
         android:id="@+id/btnAgregarProducto"
         android:layout_width="379dp"
         android:layout_height="92dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="36dp"
         android:backgroundTint="#000000"
         android:text="Agregar Producto"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextIdCategoria" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCategoria" />
 
     <EditText
         android:id="@+id/editTextImagenUrl"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="32dp"
         android:hint="URL de la imagen"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editTextStock" />
 
-    <EditText
-        android:id="@+id/editTextIdCategoria"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:hint="idCategoria"
+    <Spinner
+        android:id="@+id/spinnerCategoria"
+        android:layout_width="375dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="192dp"
+        android:entries="@array/categorias"
+        android:hint="Seleccionar Categoría"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.055"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextImagenUrl" />
+        app:layout_constraintTop_toBottomOf="@id/editTextPrecio" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
