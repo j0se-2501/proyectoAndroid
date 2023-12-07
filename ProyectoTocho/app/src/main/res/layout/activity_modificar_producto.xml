@@ -163,14 +163,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editTextNuevoStock" />
 
-    <EditText
-        android:id="@+id/editTextIdCategoria"
+    <Spinner
+        android:id="@+id/spinnerNuevaCategoria"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:hint="Nueva categoría"
-        android:inputType="number"
-        android:textColor="#000000"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.562"
@@ -187,7 +184,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextIdCategoria" />
+        app:layout_constraintTop_toBottomOf="@id/spinnerNuevaCategoria" />
 
     <EditText
         android:id="@+id/editTextImagenUrl"

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string-array name="categorias">
+        <item>1. Motor</item>
+        <item>2. Transmisión</item>
+        <item>3. Sobrealimentación</item>
+        <item>4. Neumáticos</item>
+        <item>5. Llantas</item>
+        <item>6. Suspensión</item>
+        <item>7. Frenos</item>
+        <item>8. Carrocería</item>
+        <item>9. Electrónica</item>
+    </string-array>
+</resources>
+
