@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ public class VistaPorCategoria extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vista_por_categoria);
-
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.color_notif_bar));
         dbHelper = new DbHelper(this);
 
         // Obtener la categoría seleccionada del intent

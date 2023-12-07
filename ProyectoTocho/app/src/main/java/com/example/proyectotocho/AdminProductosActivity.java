@@ -1,6 +1,8 @@
 package com.example.proyectotocho;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -29,7 +31,7 @@ public class AdminProductosActivity extends AppCompatActivity {
          eliminarProductoButton = findViewById(R.id.Eliminar);
         mostrarProductoButton = findViewById(R.id.mostrarProductos);
         salirButton = findViewById(R.id.salir);
-
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.color_notif_bar));
         salirButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -3,6 +3,7 @@
 package com.example.proyectotocho;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
@@ -40,7 +41,7 @@ public class ModificarProductoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modificar_producto);
-
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.color_notif_bar));
         textViewNuevoNombre = findViewById(R.id.textViewNuevoNombre);
         textViewNuevaDescripcion = findViewById(R.id.textViewNuevaDescripcion);
         textViewNuevoPrecio = findViewById(R.id.textViewNuevoPrecio);

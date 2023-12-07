@@ -10,6 +10,7 @@ import android.widget.Toast;
 import android.widget.ArrayAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 public class AgregarProductoActivity extends AppCompatActivity {
     private EditText editTextNombre;
@@ -30,7 +31,7 @@ public class AgregarProductoActivity extends AppCompatActivity {
         editTextStock = findViewById(R.id.editTextStock);
         editTextImagenUrl = findViewById(R.id.editTextImagenUrl);
         spinnerCategoria =findViewById(R.id.spinnerCategoria);
-
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.color_notif_bar));
         // Configurar el adaptador para el Spinner usando el array de categorías
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,

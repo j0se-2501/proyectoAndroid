@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 public class UserActivity extends AppCompatActivity {
 
@@ -18,7 +19,7 @@ public class UserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
         Intent intent = new Intent(this, VistaPorCategoria.class);
-
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.color_notif_bar));
         // Obtener el correo del usuario que ha iniciado sesión
         String userEmail = getIntent().getStringExtra("USER_EMAIL");
 
