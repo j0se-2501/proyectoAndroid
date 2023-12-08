@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,7 +35,7 @@ public class UserActivity extends AppCompatActivity {
         userEmailTextView.setText("Bienvenido, " + nombreDeUsuario+".");
 
         // Configurar OnClickListener para cada botón
-        Button motorButton = findViewById(R.id.motorButton);
+        ImageButton motorButton = findViewById(R.id.imageButton);
         motorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,7 +44,7 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
-        Button transmisionButton = findViewById(R.id.transmisionButton);
+        ImageButton transmisionButton = findViewById(R.id.imageButton2);
         transmisionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,7 +53,7 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
-        Button sobrealimentacionButton = findViewById(R.id.sobrealimentacionButton);
+        ImageButton sobrealimentacionButton = findViewById(R.id.imageButton3);
         sobrealimentacionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,7 +62,7 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
-        Button neumaticosButton = findViewById(R.id.neumaticosButton);
+        ImageButton neumaticosButton = findViewById(R.id.imageButton4);
         neumaticosButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +71,7 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
-        Button llantasButton = findViewById(R.id.llantasButton);
+        ImageButton llantasButton = findViewById(R.id.imageButton5);
         llantasButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +80,7 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
-        Button suspensionButton = findViewById(R.id.suspensionButton);
+        ImageButton suspensionButton = findViewById(R.id.imageButton6);
         suspensionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +89,7 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
-        Button frenosButton = findViewById(R.id.frenosButton);
+        ImageButton frenosButton = findViewById(R.id.imageButton7);
         frenosButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,7 +98,7 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
-        Button carroceriaButton = findViewById(R.id.carroceriaButton);
+        ImageButton carroceriaButton = findViewById(R.id.imageButton8);
         carroceriaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,7 +107,7 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
-        Button electronicaButton = findViewById(R.id.electronicaButton);
+        ImageButton electronicaButton = findViewById(R.id.imageButton9);
         electronicaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
