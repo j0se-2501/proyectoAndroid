@@ -40,7 +40,8 @@ public class VistaPorCategoria extends AppCompatActivity {
         // Configurar el RecyclerView
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ProductoAdapter(obtenerProductosPorCategoria(categoriaSeleccionada));
+        adapter = new ProductoAdapter(this, obtenerProductosPorCategoria(categoriaSeleccionada));
+
         recyclerView.setAdapter(adapter);
     }
 
