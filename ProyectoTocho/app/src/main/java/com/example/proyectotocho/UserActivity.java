@@ -23,9 +23,15 @@ public class UserActivity extends AppCompatActivity {
         // Obtener el correo del usuario que ha iniciado sesión
         String userEmail = getIntent().getStringExtra("USER_EMAIL");
 
+        // Dividir el correo electrónico en dos partes: nombreDeUsuario y dominio
+        String[] parts = userEmail.split("@");
+
+        // Obtener solo la parte antes de '@'
+        String nombreDeUsuario = parts[0];
+
         // Mostrar el correo en un TextView
         TextView userEmailTextView = findViewById(R.id.userEmailTextView);
-        userEmailTextView.setText("Correo: " + userEmail);
+        userEmailTextView.setText("Bienvenido, " + nombreDeUsuario+".");
 
         // Configurar OnClickListener para cada botón
         Button motorButton = findViewById(R.id.motorButton);
