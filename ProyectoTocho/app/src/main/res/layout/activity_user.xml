@@ -13,30 +13,26 @@
     android:background="#FFFFFF"
     tools:context=".UserActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="92dp"
+        android:layout_height="84dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
     <TextView
         android:id="@+id/userEmailTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="User:"
-        android:textAlignment="center"
+        android:textAlignment="textStart"
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.452"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="92dp"
-        android:layout_height="84dp"
-        app:layout_constraintEnd_toStartOf="@+id/userEmailTextView"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
 
     <ImageView
         android:id="@+id/imagen_fondo_silueta"
@@ -48,83 +44,15 @@
         app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.506"
+        app:layout_constraintVertical_bias="0.366"
         app:srcCompat="@drawable/logo" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="146dp"
-        android:layout_height="25dp"
-        android:text="Sobrealimentación"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="38dp"
-        tools:layout_editor_absoluteY="462dp" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="95dp"
-        android:layout_height="24dp"
-        android:text="Neumáticos"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="245dp"
-        tools:layout_editor_absoluteY="462dp" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="61dp"
-        android:layout_height="22dp"
-        android:text="Llantas"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="81dp"
-        tools:layout_editor_absoluteY="636dp" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="61dp"
-        android:layout_height="22dp"
-        android:text="Frenos"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="81dp"
-        tools:layout_editor_absoluteY="802dp" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="216dp"
-        android:layout_height="222dp"
-        android:text="Electrónica"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="64dp"
-        tools:layout_editor_absoluteY="960dp" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="80dp"
-        android:layout_height="26dp"
-        android:text="Carrocería"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="249dp"
-        tools:layout_editor_absoluteY="802dp" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="99dp"
-        android:layout_height="22dp"
-        android:text="Suspensión"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="245dp"
-        tools:layout_editor_absoluteY="635dp" />
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="166dp"
-        android:layout_height="149dp"
+        android:layout_width="168dp"
+        android:layout_height="129dp"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="20dp"
         android:adjustViewBounds="false"
         android:background="#00FFFFFF"
         android:cropToPadding="false"
@@ -135,8 +63,10 @@
 
     <ImageButton
         android:id="@+id/imageButton2"
-        android:layout_width="166dp"
-        android:layout_height="149dp"
+        android:layout_width="168dp"
+        android:layout_height="129dp"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="20dp"
         android:adjustViewBounds="false"
         android:background="#00FFFFFF"
         android:cropToPadding="false"
@@ -145,96 +75,12 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:srcCompat="@drawable/transmision" />
 
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="184dp"
-        android:layout_height="135dp"
-        android:adjustViewBounds="false"
-        android:background="#00FFFFFF"
-        android:cropToPadding="false"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:srcCompat="@drawable/sobrealimentacion" />
-
-    <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="168dp"
-        android:layout_height="129dp"
-        android:adjustViewBounds="false"
-        android:background="#00FFFFFF"
-        android:cropToPadding="false"
-        android:scaleType="centerCrop"
-        app:layout_constraintStart_toEndOf="imageButton3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:srcCompat="@drawable/neumaticos" />
-
-    <ImageButton
-        android:id="@+id/imageButton5"
-        android:layout_width="168dp"
-        android:layout_height="129dp"
-        android:adjustViewBounds="false"
-        android:background="#00FFFFFF"
-        android:cropToPadding="false"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/llantas"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="507dp" />
-
-    <ImageButton
-        android:id="@+id/imageButton7"
-        android:layout_width="168dp"
-        android:layout_height="129dp"
-        android:adjustViewBounds="false"
-        android:background="#00FFFFFF"
-        android:cropToPadding="false"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/frenos"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="670dp" />
-
-    <ImageButton
-        android:id="@+id/imageButton9"
-        android:layout_width="168dp"
-        android:layout_height="129dp"
-        android:adjustViewBounds="false"
-        android:background="#00FFFFFF"
-        android:cropToPadding="false"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/electronica"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="840dp" />
-
-    <ImageButton
-        android:id="@+id/imageButton8"
-        android:layout_width="168dp"
-        android:layout_height="129dp"
-        android:adjustViewBounds="false"
-        android:background="#00FFFFFF"
-        android:cropToPadding="false"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/carroceria"
-        tools:layout_editor_absoluteX="209dp"
-        tools:layout_editor_absoluteY="673dp" />
-
-    <ImageButton
-        android:id="@+id/imageButton6"
-        android:layout_width="168dp"
-        android:layout_height="129dp"
-        android:adjustViewBounds="false"
-        android:background="#00FFFFFF"
-        android:cropToPadding="false"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/suspension"
-        tools:layout_editor_absoluteX="200dp"
-        tools:layout_editor_absoluteY="505dp" />
-
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="164dp"
-        android:layout_height="18dp"
+        android:layout_width="165dp"
+        android:layout_height="23dp"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="20dp"
         android:text="Motor"
         android:textAlignment="center"
         android:textSize="16sp"
@@ -246,13 +92,225 @@
         android:id="@+id/textView3"
         android:layout_width="165dp"
         android:layout_height="23dp"
-        android:layout_marginTop="1dp"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="20dp"
         android:text="Transmisión"
         android:textAlignment="center"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintStart_toEndOf="@+id/imageButton"
         app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="168dp"
+        android:layout_height="129dp"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="20dp"
+        android:adjustViewBounds="false"
+        android:background="#00FFFFFF"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:srcCompat="@drawable/sobrealimentacion" />
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="168dp"
+        android:layout_height="129dp"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="20dp"
+        android:adjustViewBounds="false"
+        android:background="#00FFFFFF"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toEndOf="@+id/imageButton3"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:srcCompat="@drawable/neumaticos" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="165dp"
+        android:layout_height="23dp"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="20dp"
+        android:textAlignment="center"
+        android:text="Sobrealimentación"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="165dp"
+        android:layout_height="23dp"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="20dp"
+        android:textAlignment="center"
+        android:text="Neumáticos"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imageButton3"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton4"/>
+
+    <ImageButton
+        android:id="@+id/imageButton5"
+        android:layout_width="168dp"
+        android:layout_height="129dp"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="20dp"
+        android:adjustViewBounds="false"
+        android:background="#00FFFFFF"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/llantas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <ImageButton
+        android:id="@+id/imageButton6"
+        android:layout_width="168dp"
+        android:layout_height="129dp"
+        android:layout_margin="10dp"
+        android:layout_marginStart="16dp"
+        android:adjustViewBounds="false"
+        android:background="#00FFFFFF"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toEndOf="@+id/imageButton5"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:srcCompat="@drawable/suspension" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="165dp"
+        android:layout_height="23dp"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="20dp"
+        android:textAlignment="center"
+        android:text="Llantas"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton5" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="165dp"
+        android:layout_height="23dp"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="20dp"
+        android:textAlignment="center"
+        android:text="Suspensión"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imageButton5"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton6" />
+
+
+
+    <ImageButton
+        android:id="@+id/imageButton7"
+        android:layout_width="168dp"
+        android:layout_height="129dp"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="20dp"
+        android:adjustViewBounds="false"
+        android:background="#00FFFFFF"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/frenos"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <ImageButton
+        android:id="@+id/imageButton8"
+        android:layout_width="168dp"
+        android:layout_height="129dp"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="20dp"
+        android:adjustViewBounds="false"
+        android:background="#00FFFFFF"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/carroceria"
+        app:layout_constraintStart_toEndOf="@+id/imageButton7"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="165dp"
+        android:layout_height="23dp"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="20dp"
+        android:textAlignment="center"
+        android:text="Frenos"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton7" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="165dp"
+        android:layout_height="23dp"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="20dp"
+        android:textAlignment="center"
+        android:text="Carrocería"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imageButton7"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton8" />
+
+    <ImageButton
+        android:id="@+id/imageButton9"
+        android:layout_width="168dp"
+        android:layout_height="129dp"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="20dp"
+        android:adjustViewBounds="false"
+        android:background="#00FFFFFF"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/electronica"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="166dp"
+        android:layout_height="216dp"
+        android:layout_margin="10dp"
+        android:text="Electrónica"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton9" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
+</ScrollView>
