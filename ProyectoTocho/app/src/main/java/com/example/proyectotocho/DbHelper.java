@@ -35,31 +35,31 @@ public class DbHelper extends SQLiteOpenHelper {
             db.execSQL("INSERT INTO categorias (id, nombre) VALUES ('9', 'electronica')");
 
             // Motor
-            db.execSQL("INSERT INTO piezas (nombre, descripcion, precio, stock, imagen_url, categoria_id) VALUES ('Motor de Alto Rendimiento', 'Potente motor para mejorar el rendimiento de tu vehículo', 99, 10, 'imagen_motor.jpg', 1)");
+            db.execSQL("INSERT INTO piezas (nombre, descripcion, precio, stock, imagen_url, categoria_id) VALUES ('Motor de Alto Rendimiento', 'Potente motor para mejorar el rendimiento de tu vehículo', 99, 10, 'imagen_motor', 1)");
 
 // Transmisión
-            db.execSQL("INSERT INTO piezas (nombre, descripcion, precio, stock, imagen_url, categoria_id) VALUES ('Kit de Embrague Deportivo', 'Mejora la respuesta y el rendimiento de la transmisión', 29, 15, 'imagen_transmision.jpg', 2)");
+            db.execSQL("INSERT INTO piezas (nombre, descripcion, precio, stock, imagen_url, categoria_id) VALUES ('Kit de Embrague Deportivo', 'Mejora la respuesta y el rendimiento de la transmisión', 29, 15, 'imagen_transmision', 2)");
 
 // Sobrealimentación
-            db.execSQL("INSERT INTO piezas (nombre, descripcion, precio, stock, imagen_url, categoria_id) VALUES ('Turbocharger de Alta Potencia', 'Aumenta la potencia de tu motor con este turbocharger', 59, 8, 'imagen_sobrealimentacion.jpg', 3)");
+            db.execSQL("INSERT INTO piezas (nombre, descripcion, precio, stock, imagen_url, categoria_id) VALUES ('Turbocharger de Alta Potencia', 'Aumenta la potencia de tu motor con este turbocharger', 59, 8, 'imagen_sobrealimentacion', 3)");
 
 // Neumáticos
-            db.execSQL("INSERT INTO piezas (nombre, descripcion, precio, stock, imagen_url, categoria_id) VALUES ('Neumáticos Deportivos', 'Mejora el agarre y la tracción en carretera', 14, 20, 'imagen_neumaticos.jpg', 4)");
+            db.execSQL("INSERT INTO piezas (nombre, descripcion, precio, stock, imagen_url, categoria_id) VALUES ('Neumáticos Deportivos', 'Mejora el agarre y la tracción en carretera', 14, 20, 'imagen_neumaticos', 4)");
 
 // Llantas
-            db.execSQL("INSERT INTO piezas (nombre, descripcion, precio, stock, imagen_url, categoria_id) VALUES ('Llantas de Aleación Ligera', 'Llantas elegantes y ligeras para un mejor manejo', 199, 12, 'imagen_llantas.jpg', 5)");
+            db.execSQL("INSERT INTO piezas (nombre, descripcion, precio, stock, imagen_url, categoria_id) VALUES ('Llantas de Aleación Ligera', 'Llantas elegantes y ligeras para un mejor manejo', 199, 12, 'imagen_llantas', 5)");
 
 // Suspensión
-            db.execSQL("INSERT INTO piezas (nombre, descripcion, precio, stock, imagen_url, categoria_id) VALUES ('Kit de Suspensión Deportiva', 'Mejora la estabilidad y el manejo de tu vehículo', 34, 10, 'imagen_suspension.jpg', 6)");
+            db.execSQL("INSERT INTO piezas (nombre, descripcion, precio, stock, imagen_url, categoria_id) VALUES ('Kit de Suspensión Deportiva', 'Mejora la estabilidad y el manejo de tu vehículo', 34, 10, 'imagen_suspension', 6)");
 
 // Frenos
-            db.execSQL("INSERT INTO piezas (nombre, descripcion, precio, stock, imagen_url, categoria_id) VALUES ('Kit de Frenos de Alto Rendimiento', 'Mejora la potencia de frenado con este kit', 49, 15, 'imagen_frenos.jpg', 7)");
+            db.execSQL("INSERT INTO piezas (nombre, descripcion, precio, stock, imagen_url, categoria_id) VALUES ('Kit de Frenos de Alto Rendimiento', 'Mejora la potencia de frenado con este kit', 49, 15, 'imagen_frenos', 7)");
 
 // Carrocería
-            db.execSQL("INSERT INTO piezas (nombre, descripcion, precio, stock, imagen_url, categoria_id) VALUES ('Alerón Deportivo', 'Agrega estilo y aerodinámica a tu vehículo', 12, 18, 'imagen_carroceria.jpg', 8)");
+            db.execSQL("INSERT INTO piezas (nombre, descripcion, precio, stock, imagen_url, categoria_id) VALUES ('Alerón Deportivo', 'Agrega estilo y aerodinámica a tu vehículo', 12, 18, 'imagen_carroceria', 8)");
 
 // Electrónica
-            db.execSQL("INSERT INTO piezas (nombre, descripcion, precio, stock, imagen_url, categoria_id) VALUES ('Centralita de Potencia', 'Optimiza el rendimiento del motor con esta centralita', 449, 12, 'imagen_electronica.jpg', 9)");
+            db.execSQL("INSERT INTO piezas (nombre, descripcion, precio, stock, imagen_url, categoria_id) VALUES ('Centralita de Potencia', 'Optimiza el rendimiento del motor con esta centralita', 449, 12, 'imagen_electronica', 9)");
 
 
 
