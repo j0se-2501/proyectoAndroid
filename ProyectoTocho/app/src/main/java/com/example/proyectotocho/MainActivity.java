@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         EditText correologin = findViewById(R.id.emaillogin);
-        EditText contraseñalogin = findViewById(R.id.contraseñalogin);
+        EditText contrasenalogin = findViewById(R.id.contrasenalogin);
         registrarboton = findViewById(R.id.registarselogin);
         login = findViewById(R.id.entrar);
         invitadoboton=findViewById(R.id.invitado);
@@ -51,20 +51,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String correo = correologin.getText().toString();
-                String contraseña = contraseñalogin.getText().toString();
+                String contrasena = contrasenalogin.getText().toString();
                 correoIntent = correo;
 
-                if (correo.isEmpty() || contraseña.isEmpty()) {
+                if (correo.isEmpty() || contrasena.isEmpty()) {
                     Toast.makeText(MainActivity.this, "Por favor, complete todos los campos", Toast.LENGTH_LONG).show();
                 } else {
                     // Verificar si el usuario es admin
-                    if (esAdmin(correo, contraseña)) {
+                    if (esAdmin(correo, contrasena)) {
                         // Si el usuario es admin, iniciar AdminActivity
                         Intent adminIntent = new Intent(MainActivity.this, AdminActivity.class);
                         startActivity(adminIntent);
                     } else {
                         // Si el usuario no es admin, validar en la base de datos
-                        if (validarUsuario(correo, contraseña)) {
+                        if (validarUsuario(correo, contrasena)) {
                             // Si las credenciales son correctas, iniciar UserActivity
                             Intent userIntent = new Intent(MainActivity.this, UserActivity.class);
                             userIntent.putExtra("USER_EMAIL", correo);
@@ -81,12 +81,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    private boolean validarUsuario(String correo, String contraseña) {
+    private boolean validarUsuario(String correo, String contrasena) {
         // Obtener una instancia de la base de datos
         SQLiteDatabase db = DbHelper.getInstance(MainActivity.this).getWritableDatabase();
 
-        // Consultar si existe un usuario con el correo y contraseña proporcionados
-        Cursor cursor = db.rawQuery("SELECT * FROM usuarios WHERE correo=? AND contraseña=?", new String[]{correo, contraseña});
+        Cursor cursor = db.rawQuery("SELECT * FROM usuarios WHERE correo=? AND contrasena=?", new String[]{correo, contrasena});
 
         // Verificar si se encontró algún resultado
         boolean resultado = cursor.moveToFirst();
@@ -97,10 +96,10 @@ public class MainActivity extends AppCompatActivity {
 
         return resultado;
     }
-    private boolean esAdmin(String correo, String contraseña) {
+    private boolean esAdmin(String correo, String contrasena) {
         String correoAdmin = "admin@admin.com";
-        String contraseñaAdmin = "admin";
+        String contrasenaAdmin = "admin";
 
-        return correo.equals(correoAdmin) && contraseña.equals(contraseñaAdmin);
+        return correo.equals(correoAdmin) && contrasena.equals(contrasenaAdmin);
     }
 }
