@@ -14,11 +14,11 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHolder> {
+public class ProductoAdapterInvitado extends RecyclerView.Adapter<ProductoAdapterInvitado.ViewHolder> {
     private List<Producto> productos;
     private Context context;
 
-    public ProductoAdapter(Context context, List<Producto> productos) {
+    public ProductoAdapterInvitado(Context context, List<Producto> productos) {
         this.context = context;
         this.productos = productos;
     }
@@ -28,7 +28,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.elemento_lista, parent, false);
+        View view = inflater.inflate(R.layout.elemento_lista_invitado, parent, false);
         return new ViewHolder(view);
     }
 
@@ -44,9 +44,8 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
         int resourceId = context.getResources().getIdentifier(producto.getImagenUrl(), "drawable", context.getPackageName());
         Glide.with(context)
                 .load(resourceId)
-                .error(R.drawable.logo)
+                .error(R.drawable.logo) // Recurso para mostrar en caso de error
                 .into(holder.imageViewProducto);
-
     }
 
     @Override
@@ -63,10 +62,11 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
         ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            textViewNombre = itemView.findViewById(R.id.textViewNombre);
-            textViewDescripcion = itemView.findViewById(R.id.textViewDescripcion);
-            textViewPrecio = itemView.findViewById(R.id.textViewPrecio);
-            imageViewProducto = itemView.findViewById(R.id.imageViewProducto);
+            textViewNombre = itemView.findViewById(R.id.textViewNombreInv);
+            textViewDescripcion = itemView.findViewById(R.id.textViewDescripcionInv);
+            textViewPrecio = itemView.findViewById(R.id.textViewPrecioInv);
+            imageViewProducto = itemView.findViewById(R.id.imageViewProductoInv);
         }
     }
 }
+
