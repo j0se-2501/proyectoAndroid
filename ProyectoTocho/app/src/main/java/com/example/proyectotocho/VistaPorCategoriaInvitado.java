@@ -1,5 +1,6 @@
 package com.example.proyectotocho;
 
+
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,7 +13,7 @@ import androidx.core.content.ContextCompat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VistaPorCategoria extends AppCompatActivity {
+public class VistaPorCategoriaInvitado extends AppCompatActivity {
 
     private DbHelper dbHelper;
     private String categoriaSeleccionada;
@@ -22,7 +23,7 @@ public class VistaPorCategoria extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vista_por_categoria);
+        setContentView(R.layout.activity_vista_por_categoria_invitado);
         getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.color_notif_bar));
         dbHelper = new DbHelper(this);
 
@@ -34,7 +35,7 @@ public class VistaPorCategoria extends AppCompatActivity {
         setTitle("Piezas de " + categoriaSeleccionada);
 
         // Configurar el RecyclerView
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerViewInvitado);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new ProductoAdapter(this, obtenerProductosPorCategoria(categoriaSeleccionada));
 
@@ -83,3 +84,4 @@ public class VistaPorCategoria extends AppCompatActivity {
         return productos;
     }
 }
+
