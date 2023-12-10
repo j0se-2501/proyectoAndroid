@@ -65,7 +65,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
-        android:hint="Contraseña"
+        android:hint="Contrasena"
         android:inputType="textPassword"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"

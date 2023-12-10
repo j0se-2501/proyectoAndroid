@@ -44,7 +44,7 @@
         android:layout_marginTop="240dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="#000000"
-        android:text="Añadir Usuario"
+        android:text="Agregar Usuario"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="25dp"

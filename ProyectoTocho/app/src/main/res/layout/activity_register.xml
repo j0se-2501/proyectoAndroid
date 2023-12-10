@@ -56,19 +56,19 @@
         android:inputType="textEmailAddress" />
 
     <TextView
-        android:id="@+id/textcontraseña2"
+        android:id="@+id/textcontrasena2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_row="4"
         android:layout_column="0"
         android:layout_marginTop="20dp"
         android:fontFamily="sans-serif-black"
-        android:text="Contraseña"
+        android:text="Contrasena"
         android:textColor="#000000"
         android:textSize="16sp" />
 
     <EditText
-        android:id="@+id/contraseña2"
+        android:id="@+id/contrasena2"
         style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
         android:layout_column="0"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="tu contraseña"
+        android:hint="tu contrasena"
         android:textColor="#000000"
         android:inputType="textPassword" />
 

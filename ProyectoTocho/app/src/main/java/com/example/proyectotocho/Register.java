@@ -22,7 +22,7 @@ public class Register extends AppCompatActivity {
         botonregistrar = findViewById(R.id.registrarse);
         botonloguear = findViewById(R.id.loguearseregister);
         EditText correoregister = findViewById(R.id.email2);
-        EditText contraseñaregister = findViewById(R.id.contraseña2);
+        EditText contrasenaregister = findViewById(R.id.contrasena2);
         getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.color_notif_bar));
         //Creamos la base de datos
         DbHelper dbhelper = new DbHelper(Register.this);
@@ -38,8 +38,8 @@ public class Register extends AppCompatActivity {
             @Override
             public void onClick(View view) {
          String correo = correoregister.getText().toString();
-         String contraseña = contraseñaregister.getText().toString();
-         if (correo.isEmpty() || contraseña.isEmpty()){
+         String contrasena = contrasenaregister.getText().toString();
+         if (correo.isEmpty() || contrasena.isEmpty()){
              Toast.makeText(Register.this, "Por favor, complete todos los campos", Toast.LENGTH_LONG).show();
 
          }else {
@@ -47,12 +47,12 @@ public class Register extends AppCompatActivity {
              SQLiteDatabase db = dbHelper.getWritableDatabase();
              ContentValues valores= new ContentValues();
              valores.put("correo",correo);
-             valores.put("contraseña",contraseña);
+             valores.put("contrasena",contrasena);
 
              long idInsercion = db.insert("usuarios", null, valores);
 
              correoregister.setText("");
-             contraseñaregister.setText("");
+             contrasenaregister.setText("");
 
              if (idInsercion != -1) {
                  Toast.makeText(Register.this, "DATOS INSERTADOS", Toast.LENGTH_LONG).show();

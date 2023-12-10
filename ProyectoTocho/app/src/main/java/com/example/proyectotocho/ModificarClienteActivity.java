@@ -65,7 +65,7 @@ public class ModificarClienteActivity extends AppCompatActivity {
             // El producto existe, procede con la modificación
             ContentValues values = new ContentValues();
             if (!nuevoCorreo.isEmpty()) values.put("correo", nuevoCorreo);
-            if (!nuevaContrasenna.isEmpty()) values.put("contraseña", nuevaContrasenna);
+            if (!nuevaContrasenna.isEmpty()) values.put("contrasena", nuevaContrasenna);
 
             // Realiza la actualización del producto
             int numRowsUpdated = db.update("usuarios", values, "id=?", new String[]{String.valueOf(clienteId)});

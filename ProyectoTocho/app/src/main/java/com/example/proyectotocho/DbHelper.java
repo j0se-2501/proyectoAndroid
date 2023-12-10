@@ -23,7 +23,7 @@ public class DbHelper extends SQLiteOpenHelper {
             db.execSQL("CREATE TABLE IF NOT EXISTS categorias (id INTEGER PRIMARY KEY, nombre TEXT UNIQUE)");
             db.execSQL("CREATE TABLE IF NOT EXISTS piezas (id INTEGER PRIMARY KEY, nombre TEXT, descripcion TEXT, precio REAL, stock INTEGER, imagen_url TEXT, categoria_id INTEGER, FOREIGN KEY (categoria_id) REFERENCES categorias(id))");
 
-            db.execSQL("CREATE TABLE IF NOT EXISTS usuarios (id INTEGER PRIMARY KEY, correo TEXT UNIQUE, contraseña TEXT)");
+            db.execSQL("CREATE TABLE IF NOT EXISTS usuarios (id INTEGER PRIMARY KEY, correo TEXT UNIQUE, contrasena TEXT)");
             db.execSQL("INSERT INTO categorias (id, nombre) VALUES ('1', 'motor')");
             db.execSQL("INSERT INTO categorias (id, nombre) VALUES ('2', 'transmision')");
             db.execSQL("INSERT INTO categorias (id, nombre) VALUES ('3', 'sobrealimentacion')");
@@ -63,7 +63,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
 
 
-            db.execSQL("INSERT INTO usuarios (correo, contraseña) VALUES ('admin@admin.com', 'admin')");
+            db.execSQL("INSERT INTO usuarios (correo, contrasena) VALUES ('admin@admin.com', 'admin')");
         } catch (SQLException e) {
             e.printStackTrace();
         }

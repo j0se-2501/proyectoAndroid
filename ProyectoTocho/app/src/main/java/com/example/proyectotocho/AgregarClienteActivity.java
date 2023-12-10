@@ -43,7 +43,7 @@ public class AgregarClienteActivity extends AppCompatActivity {
         // Crea un objeto ContentValues para insertar los datos en la tabla "piezas"
         ContentValues values = new ContentValues();
         values.put("correo", correo);
-        values.put("contraseña", contrasenna);
+        values.put("contrasena", contrasenna);
         // Inserta el nuevo producto en la tabla "piezas"
         long newRowId = db.insert("usuarios", null, values);
 
