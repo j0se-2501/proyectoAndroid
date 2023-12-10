@@ -85,6 +85,7 @@
         android:textAlignment="center"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton" />
 
@@ -98,6 +99,7 @@
         android:textAlignment="center"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/imageButton"
         app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
 
@@ -139,6 +141,7 @@
         android:text="Sobrealimentación"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
 
@@ -152,6 +155,7 @@
         android:text="Neumáticos"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/imageButton3"
         app:layout_constraintTop_toBottomOf="@+id/imageButton4"/>
 
@@ -193,6 +197,7 @@
         android:text="Llantas"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton5" />
 
@@ -206,6 +211,7 @@
         android:text="Suspensión"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/imageButton5"
         app:layout_constraintTop_toBottomOf="@+id/imageButton6" />
 
@@ -249,6 +255,7 @@
         android:text="Frenos"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton7" />
 
@@ -262,6 +269,7 @@
         android:text="Carrocería"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/imageButton7"
         app:layout_constraintTop_toBottomOf="@+id/imageButton8" />
 
@@ -288,6 +296,7 @@
         android:textAlignment="center"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton9" />
 
