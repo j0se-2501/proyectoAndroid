@@ -120,7 +120,7 @@
         android:layout_width="163dp"
         android:layout_height="38dp"
         android:backgroundTint="#000000"
-        android:text="Anadir al carrito"
+        android:text="Añadir al carrito"
         android:textColorHighlight="#000000"
         android:textColorLink="#000000"
         app:cornerRadius="0dp"
