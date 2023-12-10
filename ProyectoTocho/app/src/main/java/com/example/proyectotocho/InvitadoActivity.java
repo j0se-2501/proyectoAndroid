@@ -36,7 +36,7 @@ public class InvitadoActivity extends AppCompatActivity {
 
         // Mostrar el correo en un TextView
 
-        userEmailTextView.setText("Bienvenido, " + nombreDeUsuario + ".");
+        userEmailTextView.setText("Bienvenido, invitado.");
 
         // Configurar OnClickListener para cada botón
         ImageButton motorButton = findViewById(R.id.imageButton);
