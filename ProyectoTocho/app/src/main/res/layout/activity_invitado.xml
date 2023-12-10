@@ -1,38 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".InvitadoActivity">
+    tools:context=".UserActivity">
 
     <TextView
         android:id="@+id/userEmailTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Bienvenido invitado"
+        android:text="Bienvenido Invitado"
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.703"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/objetosTextView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:text="Tienda:"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -43,5 +30,130 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
+
+    <ImageView
+        android:id="@+id/imagen_fondo_silueta"
+        android:layout_width="424dp"
+        android:layout_height="603dp"
+        android:alpha="0.15"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/logo" />
+
+    <Button
+        android:id="@+id/motorButtonInv"
+        android:layout_width="179dp"
+        android:layout_height="76dp"
+        android:layout_marginBottom="32dp"
+        android:text="motorButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Otros botones... -->
+
+    <Button
+        android:id="@+id/transmisionButtonInv"
+        android:layout_width="179dp"
+        android:layout_height="76dp"
+        android:layout_marginEnd="16dp"
+        android:text="transmisionButton"
+        app:layout_constraintBottom_toTopOf="@+id/sobrealimentacionButtonInv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.914" />
+
+    <!-- Otros botones... -->
+
+    <Button
+        android:id="@+id/frenosButtonInv"
+        android:layout_width="179dp"
+        android:layout_height="76dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="68dp"
+        android:text="frenosButton"
+        app:layout_constraintBottom_toTopOf="@+id/motorButtonInv"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Otros botones... -->
+
+    <Button
+        android:id="@+id/llantasButtonInv"
+        android:layout_width="179dp"
+        android:layout_height="76dp"
+        android:layout_marginBottom="68dp"
+        android:text="llantasButton"
+        app:layout_constraintBottom_toTopOf="@+id/motorButtonInv"
+        app:layout_constraintEnd_toStartOf="@+id/frenosButtonInv"
+        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Otros botones... -->
+
+    <Button
+        android:id="@+id/suspensionButtonInv"
+        android:layout_width="179dp"
+        android:layout_height="76dp"
+        android:layout_marginBottom="16dp"
+        android:text="suspensionButton"
+        app:layout_constraintBottom_toTopOf="@+id/llantasButtonInv"
+        app:layout_constraintEnd_toStartOf="@+id/carroceriaButtonInv"
+        app:layout_constraintHorizontal_bias="0.365"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Otros botones... -->
+
+    <Button
+        android:id="@+id/carroceriaButtonInv"
+        android:layout_width="179dp"
+        android:layout_height="76dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="16dp"
+        android:text="carroceriaButton"
+        app:layout_constraintBottom_toTopOf="@+id/frenosButtonInv"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Otros botones... -->
+
+    <Button
+        android:id="@+id/neumaticosButtonInv"
+        android:layout_width="179dp"
+        android:layout_height="76dp"
+        android:layout_marginBottom="24dp"
+        android:text="neumaticosButton"
+        app:layout_constraintBottom_toTopOf="@+id/suspensionButtonInv"
+        app:layout_constraintEnd_toStartOf="@+id/sobrealimentacionButtonInv"
+        app:layout_constraintHorizontal_bias="0.39"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Otros botones... -->
+
+    <Button
+        android:id="@+id/electronicaButtonInv"
+        android:layout_width="179dp"
+        android:layout_height="76dp"
+        android:text="electronicaButton"
+        app:layout_constraintBottom_toTopOf="@+id/neumaticosButtonInv"
+        app:layout_constraintEnd_toStartOf="@+id/transmisionButtonInv"
+        app:layout_constraintHorizontal_bias="0.378"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.914" />
+
+    <!-- Otros botones... -->
+
+    <Button
+        android:id="@+id/sobrealimentacionButtonInv"
+        android:layout_width="179dp"
+        android:layout_height="76dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:text="sobrealimentacionButton"
+        app:layout_constraintBottom_toTopOf="@+id/carroceriaButtonInv"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
