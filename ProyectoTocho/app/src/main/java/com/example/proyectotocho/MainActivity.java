@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static String correoIntent;
     private Button registrarboton;
     private Button login;
     private Button invitadoboton;
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String correo = correologin.getText().toString();
                 String contraseña = contraseñalogin.getText().toString();
+                correoIntent = correo;
 
                 if (correo.isEmpty() || contraseña.isEmpty()) {
                     Toast.makeText(MainActivity.this, "Por favor, complete todos los campos", Toast.LENGTH_LONG).show();
