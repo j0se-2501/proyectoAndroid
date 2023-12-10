@@ -11,6 +11,7 @@ import android.widget.Button;
 public class AdminActivity extends AppCompatActivity {
     private Button botonProductos;
     private Button botonClientes;
+    private Button botonTienda;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,7 @@ public class AdminActivity extends AppCompatActivity {
 
         botonProductos = findViewById(R.id.Productos);
         botonClientes = findViewById(R.id.Clientes);
+        botonTienda = findViewById(R.id.Tienda);
         getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.color_notif_bar));
         botonProductos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +37,15 @@ public class AdminActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intentClientes = new Intent(AdminActivity.this, AdminClientesActivity.class);
                 startActivity(intentClientes);
+            }
+        });
+
+        botonTienda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentTienda = new Intent(AdminActivity.this, UserActivity.class);
+                intentTienda.putExtra("USER_EMAIL", MainActivity.correoIntent);
+                startActivity(intentTienda);
             }
         });
     }
