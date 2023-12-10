@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 public class UserActivity extends AppCompatActivity {
-
+private String invitado;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,22 +23,31 @@ public class UserActivity extends AppCompatActivity {
         getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.color_notif_bar));
         // Obtener el correo del usuario que ha iniciado sesión
         String userEmail = getIntent().getStringExtra("USER_EMAIL");
-
-        // Dividir el correo electrónico en dos partes: nombreDeUsuario y dominio
-        String[] parts = userEmail.split("@");
-
-        // Obtener solo la parte antes de '@'
-        String nombreDeUsuario = parts[0];
-
-        // Mostrar el correo en un TextView
         TextView userEmailTextView = findViewById(R.id.userEmailTextView);
-        userEmailTextView.setText("Bienvenido, " + nombreDeUsuario+".");
+        if(userEmail.equals("")){
+            invitado="si";
+            userEmailTextView.setText("Bienvenido, invitado. ");
+        }
 
+        else {
+            invitado="no";
+            // Dividir el correo electrónico en dos partes: nombreDeUsuario y dominio
+            String[] parts = userEmail.split("@");
+
+            // Obtener solo la parte antes de '@'
+            String nombreDeUsuario = parts[0];
+
+            // Mostrar el correo en un TextView
+
+            userEmailTextView.setText("Bienvenido, " + nombreDeUsuario + ".");
+        }
         // Configurar OnClickListener para cada botón
         ImageButton motorButton = findViewById(R.id.imageButton);
         motorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                intent.putExtra("INVITADO",invitado);
                 intent.putExtra("CATEGORIA", "motor");
                 startActivity(intent);
             }
@@ -48,6 +57,8 @@ public class UserActivity extends AppCompatActivity {
         transmisionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                intent.putExtra("INVITADO",invitado);
+
                 intent.putExtra("CATEGORIA", "transmision");
                 startActivity(intent);
             }
@@ -57,6 +68,8 @@ public class UserActivity extends AppCompatActivity {
         sobrealimentacionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                intent.putExtra("INVITADO",invitado);
+
                 intent.putExtra("CATEGORIA", "sobrealimentacion");
                 startActivity(intent);
             }
@@ -66,6 +79,8 @@ public class UserActivity extends AppCompatActivity {
         neumaticosButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                intent.putExtra("INVITADO",invitado);
+
                 intent.putExtra("CATEGORIA", "neumaticos");
                 startActivity(intent);
             }
@@ -75,6 +90,8 @@ public class UserActivity extends AppCompatActivity {
         llantasButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                intent.putExtra("INVITADO",invitado);
+
                 intent.putExtra("CATEGORIA", "llantas");
                 startActivity(intent);
             }
@@ -84,6 +101,8 @@ public class UserActivity extends AppCompatActivity {
         suspensionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                intent.putExtra("INVITADO",invitado);
+
                 intent.putExtra("CATEGORIA", "suspension");
                 startActivity(intent);
             }
@@ -93,6 +112,8 @@ public class UserActivity extends AppCompatActivity {
         frenosButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                intent.putExtra("INVITADO",invitado);
+
                 intent.putExtra("CATEGORIA", "frenos");
                 startActivity(intent);
             }
@@ -102,6 +123,8 @@ public class UserActivity extends AppCompatActivity {
         carroceriaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                intent.putExtra("INVITADO",invitado);
+
                 intent.putExtra("CATEGORIA", "carroceria");
                 startActivity(intent);
             }
@@ -111,6 +134,8 @@ public class UserActivity extends AppCompatActivity {
         electronicaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                intent.putExtra("INVITADO",invitado);
+
                 intent.putExtra("CATEGORIA", "electronica");
                 startActivity(intent);
             }
