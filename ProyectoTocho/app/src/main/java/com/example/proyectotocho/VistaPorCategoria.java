@@ -22,9 +22,8 @@ public class VistaPorCategoria extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ProductoAdapter adapter;
 
-    private String esInvitado;
 private Button btnComprar;
-    @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vista_por_categoria);
@@ -34,24 +33,18 @@ private Button btnComprar;
         // Obtener la categoría seleccionada del intent
         Intent intent = getIntent();
         categoriaSeleccionada = intent.getStringExtra("CATEGORIA");
-        esInvitado= intent.getStringExtra("INVITADO");
-
 
         // Mostrar la categoría en el título de la actividad
         setTitle("Piezas de " + categoriaSeleccionada);
 
-
         // Configurar el RecyclerView
         recyclerView = findViewById(R.id.recyclerView);
-
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new ProductoAdapter(this, obtenerProductosPorCategoria(categoriaSeleccionada));
-
         recyclerView.setAdapter(adapter);
-        btnComprar = findViewById(R.id.btnComprar);
-        if(esInvitado.equals("si")){
-            btnComprar.setVisibility(View.INVISIBLE);
-        }
+
+
+
     }
 
     private List<Producto> obtenerProductosPorCategoria(String categoria) {

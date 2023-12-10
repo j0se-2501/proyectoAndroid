@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 public class UserActivity extends AppCompatActivity {
-private String invitado;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,13 +24,10 @@ private String invitado;
         // Obtener el correo del usuario que ha iniciado sesión
         String userEmail = getIntent().getStringExtra("USER_EMAIL");
         TextView userEmailTextView = findViewById(R.id.userEmailTextView);
-        if(userEmail.equals("")){
-            invitado="si";
-            userEmailTextView.setText("Bienvenido, invitado. ");
-        }
 
-        else {
-            invitado="no";
+
+
+
             // Dividir el correo electrónico en dos partes: nombreDeUsuario y dominio
             String[] parts = userEmail.split("@");
 
@@ -40,14 +37,14 @@ private String invitado;
             // Mostrar el correo en un TextView
 
             userEmailTextView.setText("Bienvenido, " + nombreDeUsuario + ".");
-        }
+
         // Configurar OnClickListener para cada botón
         ImageButton motorButton = findViewById(R.id.imageButton);
         motorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                intent.putExtra("INVITADO",invitado);
+
                 intent.putExtra("CATEGORIA", "motor");
                 startActivity(intent);
             }
@@ -57,7 +54,7 @@ private String invitado;
         transmisionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent.putExtra("INVITADO",invitado);
+
 
                 intent.putExtra("CATEGORIA", "transmision");
                 startActivity(intent);
@@ -68,7 +65,7 @@ private String invitado;
         sobrealimentacionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent.putExtra("INVITADO",invitado);
+
 
                 intent.putExtra("CATEGORIA", "sobrealimentacion");
                 startActivity(intent);
@@ -79,7 +76,7 @@ private String invitado;
         neumaticosButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent.putExtra("INVITADO",invitado);
+
 
                 intent.putExtra("CATEGORIA", "neumaticos");
                 startActivity(intent);
@@ -90,7 +87,7 @@ private String invitado;
         llantasButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent.putExtra("INVITADO",invitado);
+
 
                 intent.putExtra("CATEGORIA", "llantas");
                 startActivity(intent);
@@ -101,7 +98,7 @@ private String invitado;
         suspensionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent.putExtra("INVITADO",invitado);
+
 
                 intent.putExtra("CATEGORIA", "suspension");
                 startActivity(intent);
@@ -112,7 +109,7 @@ private String invitado;
         frenosButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent.putExtra("INVITADO",invitado);
+
 
                 intent.putExtra("CATEGORIA", "frenos");
                 startActivity(intent);
@@ -123,7 +120,7 @@ private String invitado;
         carroceriaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent.putExtra("INVITADO",invitado);
+
 
                 intent.putExtra("CATEGORIA", "carroceria");
                 startActivity(intent);
@@ -134,7 +131,6 @@ private String invitado;
         electronicaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent.putExtra("INVITADO",invitado);
 
                 intent.putExtra("CATEGORIA", "electronica");
                 startActivity(intent);

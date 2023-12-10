@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         invitadoboton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, UserActivity.class);
+                Intent intent = new Intent(MainActivity.this, InvitadoActivity.class);
 
                intent.putExtra("USER_EMAIL", "");
                 startActivity(intent);

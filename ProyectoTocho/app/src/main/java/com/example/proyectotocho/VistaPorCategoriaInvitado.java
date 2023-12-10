@@ -18,7 +18,7 @@ public class VistaPorCategoriaInvitado extends AppCompatActivity {
     private DbHelper dbHelper;
     private String categoriaSeleccionada;
     private RecyclerView recyclerView;
-    private ProductoAdapter adapter;
+    private ProductoAdapterInvitado adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class VistaPorCategoriaInvitado extends AppCompatActivity {
         // Configurar el RecyclerView
         recyclerView = findViewById(R.id.recyclerViewInvitado);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ProductoAdapter(this, obtenerProductosPorCategoria(categoriaSeleccionada));
+        adapter = new ProductoAdapterInvitado(this, obtenerProductosPorCategoria(categoriaSeleccionada));
 
         recyclerView.setAdapter(adapter);
     }
