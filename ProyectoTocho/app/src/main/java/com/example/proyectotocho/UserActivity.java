@@ -19,6 +19,7 @@ public class UserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+        Intent intentPerfil = new Intent(this, ActivityPerfil.class);
         Intent intent = new Intent(this, VistaPorCategoria.class);
         getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.color_notif_bar));
         // Obtener el correo del usuario que ha iniciado sesión
@@ -37,9 +38,19 @@ public class UserActivity extends AppCompatActivity {
             // Mostrar el correo en un TextView
 
             userEmailTextView.setText("Bienvenido, " + nombreDeUsuario + ".");
-
+        Button buttonPerfil = findViewById(R.id.buttonPerfil);
         // Configurar OnClickListener para cada botón
         ImageButton motorButton = findViewById(R.id.imageButton);
+
+        buttonPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentPerfil = new Intent(UserActivity.this, ActivityPerfil.class);
+                intentPerfil.putExtra("USER_EMAIL", userEmail); // Pasa el correo electrónico
+                startActivity(intentPerfil);
+            }
+        });
+
         motorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
