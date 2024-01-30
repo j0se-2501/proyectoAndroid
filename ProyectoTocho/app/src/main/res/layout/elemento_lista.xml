@@ -73,63 +73,87 @@
 
     <TextView
         android:id="@+id/textViewPrecio"
-        android:layout_width="28dp"
-        android:layout_height="22dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="9dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="sans-serif-black"
         android:text="TextView"
         android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintStart_toEndOf="@+id/imageViewProducto"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDescripcion"
-        app:layout_constraintVertical_bias="0.09" />
-
-    <TextView
-        android:id="@+id/txt1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:fontFamily="sans-serif-black"
-        android:text="Precio:"
-        android:textStyle="bold"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toStartOf="@+id/textViewPrecio"
-        app:layout_constraintHorizontal_bias="0.615"
-        app:layout_constraintStart_toEndOf="@+id/imageViewProducto" />
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@id/imageViewProducto"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDescripcion" />
 
     <TextView
         android:id="@+id/txtEuro"
-        android:layout_width="26dp"
-        android:layout_height="21dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:fontFamily="sans-serif-black"
         android:text="€"
-        android:textStyle="bold"
         android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textViewPrecio"
         app:layout_constraintTop_toBottomOf="@+id/textViewDescripcion"
-        app:layout_constraintVertical_bias="0.476" />
+        app:layout_constraintVertical_bias="0.391" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btnComprar"
-        android:layout_width="163dp"
-        android:layout_height="38dp"
-        android:backgroundTint="#000000"
-        android:text="Añadir al carrito"
-        android:textColorHighlight="#000000"
-        android:textColorLink="#000000"
-        app:cornerRadius="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        android:layout_width="100px"
+        android:layout_height="100px"
+
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="40dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.407"
-        app:layout_constraintStart_toEndOf="@+id/txtEuro"
         app:layout_constraintTop_toBottomOf="@+id/textViewDescripcion"
-        app:layout_constraintVertical_bias="1.0" />
+        app:srcCompat="@drawable/carrito" />
+
+    <ImageButton
+        android:id="@+id/botonFavNo"
+        android:layout_width="100px"
+        android:layout_height="100px"
+
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="6dp"
+        android:background="#00FFFFFF"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toEndOf="@id/txtEuro"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDescripcion"
+        app:srcCompat="@drawable/fav_no" />
+
+    <TextView
+        android:id="@+id/textViewCantidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Qty:"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/txtCantidadNumero"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDescripcion" />
+
+    <EditText
+        android:id="@+id/txtCantidadNumero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-4dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="sans-serif-black"
+        android:text="1"
+        android:textColor="#000000"
+
+
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/btnComprar"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDescripcion" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
