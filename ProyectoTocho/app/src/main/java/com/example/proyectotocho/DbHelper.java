@@ -22,8 +22,9 @@ public class DbHelper extends SQLiteOpenHelper {
         try {
             db.execSQL("CREATE TABLE IF NOT EXISTS categorias (id INTEGER PRIMARY KEY, nombre TEXT UNIQUE)");
             db.execSQL("CREATE TABLE IF NOT EXISTS piezas (id INTEGER PRIMARY KEY, nombre TEXT, descripcion TEXT, precio REAL, stock INTEGER, imagen_url TEXT, categoria_id INTEGER, FOREIGN KEY (categoria_id) REFERENCES categorias(id))");
-
             db.execSQL("CREATE TABLE IF NOT EXISTS usuarios (id INTEGER PRIMARY KEY, correo TEXT UNIQUE, contrasena TEXT)");
+            db.execSQL("CREATE TABLE IF NOT EXISTS favoritos (id_usuario INTEGER, id_producto INTEGER, PRIMARY KEY (id_usuario, id_producto), FOREIGN KEY (id_usuario) REFERENCES usuarios(id), FOREIGN KEY (id_producto) REFERENCES piezas(id))");
+            db.execSQL("CREATE TABLE IF NOT EXISTS carritos (id_usuario INTEGER, id_producto INTEGER, cantidad_producto INTEGER, PRIMARY KEY (id_usuario, id_producto), FOREIGN KEY (id_usuario) REFERENCES usuarios(id), FOREIGN KEY (id_producto) REFERENCES piezas(id))");
             db.execSQL("INSERT INTO categorias (id, nombre) VALUES ('1', 'motor')");
             db.execSQL("INSERT INTO categorias (id, nombre) VALUES ('2', 'transmision')");
             db.execSQL("INSERT INTO categorias (id, nombre) VALUES ('3', 'sobrealimentacion')");
