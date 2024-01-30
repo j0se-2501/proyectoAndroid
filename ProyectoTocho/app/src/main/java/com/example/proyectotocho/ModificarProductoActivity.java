@@ -19,6 +19,8 @@ import android.widget.Toast;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import java.util.List;
+
 public class ModificarProductoActivity extends AppCompatActivity {
     private EditText editTextProductoId;
     private EditText editTextNuevoNombre;
@@ -196,6 +198,8 @@ public class ModificarProductoActivity extends AppCompatActivity {
 
             if (numRowsUpdated > 0) {
                 Toast.makeText(this, "Producto modificado correctamente", Toast.LENGTH_SHORT).show();
+
+
             } else {
                 Toast.makeText(this, "No se pudo modificar el producto. Verifique el ID.", Toast.LENGTH_SHORT).show();
             }
@@ -207,5 +211,6 @@ public class ModificarProductoActivity extends AppCompatActivity {
         // Cierra el cursor y la base de datos
         cursor.close();
         db.close();
+
     }
 }
