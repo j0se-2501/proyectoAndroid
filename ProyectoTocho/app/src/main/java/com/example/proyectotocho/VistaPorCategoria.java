@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -17,10 +18,10 @@ import java.util.List;
 
 public class VistaPorCategoria extends AppCompatActivity {
 
-    private DbHelper dbHelper;
+    private static DbHelper dbHelper;
     private String categoriaSeleccionada;
     private RecyclerView recyclerView;
-    private ProductoAdapter adapter;
+    public static ProductoAdapter adapter;
 
 private Button btnComprar;
 
@@ -47,10 +48,19 @@ private Button btnComprar;
 
     }
 
-    private List<Producto> obtenerProductosPorCategoria(String categoria) {
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.actualizarLista(obtenerProductosPorCategoria(categoriaSeleccionada));
+    }
+
+
+    public static List<Producto> obtenerProductosPorCategoria(String categoria) {
         List<Producto> productos = new ArrayList<>();
 
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        try {
+            SQLiteDatabase db = dbHelper.getReadableDatabase();
+
 
         // Utilizamos el método rawQuery para realizar la consulta SQL
         Cursor cursor = db.rawQuery("SELECT * FROM piezas WHERE categoria_id = (SELECT id FROM categorias WHERE nombre = ?)", new String[]{categoria});
@@ -79,6 +89,10 @@ private Button btnComprar;
                 productos.add(producto);
             } while (cursor.moveToNext());
 
+            for (Producto producto : productos) {
+                Log.e("e", producto.getNombre()+productos.indexOf(producto));
+            }
+
             // Cerramos el cursor
             cursor.close();
         }
@@ -87,5 +101,12 @@ private Button btnComprar;
         db.close();
 
         return productos;
+
+        } catch(NullPointerException e) {
+
+        }
+
+        return productos;
     }
+
 }

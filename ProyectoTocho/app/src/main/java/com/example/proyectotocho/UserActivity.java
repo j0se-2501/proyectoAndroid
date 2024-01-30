@@ -27,17 +27,22 @@ public class UserActivity extends AppCompatActivity {
         TextView userEmailTextView = findViewById(R.id.userEmailTextView);
 
 
+            if (userEmail!=null) {
 
+                // Dividir el correo electrónico en dos partes: nombreDeUsuario y dominio
 
-            // Dividir el correo electrónico en dos partes: nombreDeUsuario y dominio
-            String[] parts = userEmail.split("@");
+                String[] parts = userEmail.split("@");
 
-            // Obtener solo la parte antes de '@'
-            String nombreDeUsuario = parts[0];
+                // Obtener solo la parte antes de '@'
+                String nombreDeUsuario = parts[0];
 
-            // Mostrar el correo en un TextView
+                // Mostrar el correo en un TextView
 
-            userEmailTextView.setText("Bienvenido, " + nombreDeUsuario + ".");
+                userEmailTextView.setText("Bienvenido, " + nombreDeUsuario + ".");
+
+            } else {
+                userEmailTextView.setText("Bienvenido.");
+            }
         Button buttonPerfil = findViewById(R.id.buttonPerfil);
         // Configurar OnClickListener para cada botón
         ImageButton motorButton = findViewById(R.id.imageButton);

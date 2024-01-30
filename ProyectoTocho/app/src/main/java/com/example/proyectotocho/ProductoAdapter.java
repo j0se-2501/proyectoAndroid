@@ -69,4 +69,10 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
             imageViewProducto = itemView.findViewById(R.id.imageViewProducto);
         }
     }
+
+    public void actualizarLista(List<Producto> nuevosProductos) {
+        productos = nuevosProductos;
+        notifyDataSetChanged();
+    }
+
 }
