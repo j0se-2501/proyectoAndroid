@@ -56,6 +56,7 @@ public class VistaPorCategoriaInvitado extends AppCompatActivity {
             cursor.moveToFirst();
 
             // Obtenemos los índices de las columnas
+            int indexId = cursor.getColumnIndex("id");
             int indexNombre = cursor.getColumnIndex("nombre");
             int indexDescripcion = cursor.getColumnIndex("descripcion");
             int indexPrecio = cursor.getColumnIndex("precio");
@@ -64,13 +65,14 @@ public class VistaPorCategoriaInvitado extends AppCompatActivity {
 
             // Recorremos el cursor y agregamos productos a la lista
             do {
+                int id = cursor.getInt(indexId);
                 String nombre = cursor.getString(indexNombre);
                 String descripcion = cursor.getString(indexDescripcion);
                 String precio = cursor.getString(indexPrecio);
                 int stock = cursor.getInt(indexStock);
                 String imagenUrl = cursor.getString(indexImagenUrl);
 
-                Producto producto = new Producto(nombre, descripcion, precio, stock, imagenUrl);
+                Producto producto = new Producto(id, nombre, descripcion, precio, stock, imagenUrl);
                 productos.add(producto);
             } while (cursor.moveToNext());
 
