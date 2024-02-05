@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,9 +20,18 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
     private List<Producto> productos;
     private Context context;
 
+    private ImageButton botonFav;
+
+    private ImageButton botonComprar;
+
+    private boolean fav=false;
+
     public ProductoAdapter(Context context, List<Producto> productos) {
         this.context = context;
         this.productos = productos;
+        this.botonFav = botonFav;
+        this.botonComprar = botonComprar;
+        this.fav = fav;
     }
 
     @NonNull
@@ -29,6 +40,20 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.elemento_lista, parent, false);
+        ImageButton botonFav = view.findViewById(R.id.botonFavNo);
+        botonFav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!fav) {
+                    botonFav.setImageResource(R.drawable.fav_si);
+                    fav=true;
+                }
+                else {
+                    botonFav.setImageResource(R.drawable.fav_no);
+                    fav=false;
+                };
+            }
+        });
         return new ViewHolder(view);
     }
 
