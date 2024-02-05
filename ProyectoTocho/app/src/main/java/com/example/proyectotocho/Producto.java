@@ -1,6 +1,8 @@
 package com.example.proyectotocho;
 
 public class Producto {
+
+    private int id;
     private String nombre;
     private String descripcion;
     private String precio;
@@ -8,7 +10,8 @@ public class Producto {
     private String imagenUrl;
 
     // Constructor
-    public Producto(String nombre, String descripcion, String precio, int stock, String imagenUrl) {
+    public Producto(int id, String nombre, String descripcion, String precio, int stock, String imagenUrl) {
+        this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
@@ -17,6 +20,8 @@ public class Producto {
     }
 
     // Getters
+
+    public int getId() {return id;}
     public String getNombre() {
         return nombre;
     }
