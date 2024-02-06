@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -23,26 +24,44 @@ public class UserActivity extends AppCompatActivity {
         Intent intent = new Intent(this, VistaPorCategoria.class);
         getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.color_notif_bar));
         // Obtener el correo del usuario que ha iniciado sesión
-        String userEmail = getIntent().getStringExtra("USER_EMAIL");
+        String userId= getIntent().getStringExtra("USER_ID");
         TextView userEmailTextView = findViewById(R.id.userEmailTextView);
 
+        Log.e("uwu ha lleagdo el intent?",String.valueOf(userId));
 
-            if (userEmail!=null) {
 
-                // Dividir el correo electrónico en dos partes: nombreDeUsuario y dominio
+        DbHelper dbHelper = new DbHelper(this);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-                String[] parts = userEmail.split("@");
 
-                // Obtener solo la parte antes de '@'
-                String nombreDeUsuario = parts[0];
+        try {
+            Log.e("uwu LLEGO AL TRY",String.valueOf(userId));
+
+            Cursor cursor = db.rawQuery("SELECT nombre FROM usuarios WHERE id = ?", new String[]{userId});
+            if (cursor.moveToFirst()) {
+                String nombreuser = cursor.getString(0);
+                userEmailTextView.setText("Bienvenido, " + nombreuser + ".");
+                Log.e("uwu", "Nombre del usuario: " + nombreuser);
+            } else {
+                Log.e("uwu", "Cursor vacío, no se encontró el usuario con ID: " + userId);
+            }
+            cursor.close();
+        } catch (Exception e) {
+            Log.e("owo", "Error en la consulta de la base de datos", e);
+        } finally {
+            db.close();
+        }
+
+
+
+
+
 
                 // Mostrar el correo en un TextView
 
-                userEmailTextView.setText("Bienvenido, " + nombreDeUsuario + ".");
 
-            } else {
-                userEmailTextView.setText("Bienvenido.");
-            }
+
+
         Button buttonPerfil = findViewById(R.id.buttonPerfil);
         // Configurar OnClickListener para cada botón
         ImageButton motorButton = findViewById(R.id.imageButton);
@@ -51,8 +70,9 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intentPerfil = new Intent(UserActivity.this, ActivityPerfil.class);
-                intentPerfil.putExtra("USER_EMAIL", userEmail); // Pasa el correo electrónico
+                intentPerfil.putExtra("USER_ID", userId); // Pasa el id
                 startActivity(intentPerfil);
+
             }
         });
 
