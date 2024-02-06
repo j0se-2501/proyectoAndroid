@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -64,10 +65,13 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(adminIntent);
                     } else {
                         // Si el usuario no es admin, validar en la base de datos
-                        if (validarUsuario(correo, contrasena)) {
+                        int userId = validarUsuario(correo, contrasena);
+                        if (userId != -1) {
                             // Si las credenciales son correctas, iniciar UserActivity
+                            Log.e("uwu despeus de validar",String.valueOf(userId));
                             Intent userIntent = new Intent(MainActivity.this, UserActivity.class);
-                            userIntent.putExtra("USER_EMAIL", correo);
+                            userIntent.putExtra("USER_ID", String.valueOf(userId));
+
                             startActivity(userIntent);
                         } else {
                             // Si las credenciales no son correctas, mostrar un mensaje de error
@@ -81,21 +85,26 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    private boolean validarUsuario(String correo, String contrasena) {
+    private int validarUsuario(String correo, String contrasena) {
         // Obtener una instancia de la base de datos
         SQLiteDatabase db = DbHelper.getInstance(MainActivity.this).getWritableDatabase();
 
-        Cursor cursor = db.rawQuery("SELECT * FROM usuarios WHERE correo=? AND contrasena=?", new String[]{correo, contrasena});
+        Cursor cursor = db.rawQuery("SELECT id FROM usuarios WHERE correo=? AND contrasena=?", new String[]{correo, contrasena});
+
+        int userId = -1; // Valor por defecto en caso de no encontrar el usuario
 
         // Verificar si se encontró algún resultado
-        boolean resultado = cursor.moveToFirst();
+        if (cursor.moveToFirst()) {
+            userId = cursor.getInt(0); // Obtener la ID del usuario
+        }
 
         // Cerrar el cursor y la conexión a la base de datos
         cursor.close();
         db.close();
-
-        return resultado;
+        Log.e("uwu",String.valueOf(userId));
+        return userId;
     }
+
     private boolean esAdmin(String correo, String contrasena) {
         String correoAdmin = "admin@admin.com";
         String contrasenaAdmin = "admin";

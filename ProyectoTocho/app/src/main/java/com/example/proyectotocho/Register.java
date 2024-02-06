@@ -5,8 +5,10 @@ import androidx.core.content.ContextCompat;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,32 +39,37 @@ public class Register extends AppCompatActivity {
         botonregistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-         String correo = correoregister.getText().toString();
-         String contrasena = contrasenaregister.getText().toString();
-         if (correo.isEmpty() || contrasena.isEmpty()){
-             Toast.makeText(Register.this, "Por favor, complete todos los campos", Toast.LENGTH_LONG).show();
+                String correo = correoregister.getText().toString();
+                String contrasena = contrasenaregister.getText().toString();
 
-         }else {
-             DbHelper dbHelper = new DbHelper(Register.this);
-             SQLiteDatabase db = dbHelper.getWritableDatabase();
-             ContentValues valores= new ContentValues();
-             valores.put("correo",correo);
-             valores.put("contrasena",contrasena);
+                if (correo.isEmpty() || contrasena.isEmpty()) {
+                    Toast.makeText(Register.this, "Por favor, complete todos los campos", Toast.LENGTH_LONG).show();
+                } else {
+                    ContentValues valores = new ContentValues();
+                    valores.put("correo", correo);
+                    valores.put("contrasena", contrasena);
+                    valores.put("nombre", ""); // Nombre temporal o vacío
 
-             long idInsercion = db.insert("usuarios", null, valores);
+                    long idInsercion = db.insert("usuarios", null, valores);
 
-             correoregister.setText("");
-             contrasenaregister.setText("");
+                    if (idInsercion != -1) {
+                        // Generar el nombre del usuario basado en el ID
+                        String nombreuser = "User" + idInsercion;
 
-             if (idInsercion != -1) {
-                 Toast.makeText(Register.this, "DATOS INSERTADOS", Toast.LENGTH_LONG).show();
-                 Intent intent = new Intent(Register.this, MainActivity.class);
-                 startActivity(intent);
-             } else {
-                 Toast.makeText(Register.this, "ERROR. DATOS NO INSERTADOS", Toast.LENGTH_LONG).show();
-             }
+                        // Actualizar el registro del usuario con el nuevo nombre
+                        ContentValues valoresUpdate = new ContentValues();
+                        valoresUpdate.put("nombre", nombreuser);
+                        db.update("usuarios", valoresUpdate, "id = ?", new String[]{String.valueOf(idInsercion)});
 
-         }
+                        Toast.makeText(Register.this, "DATOS INSERTADOS", Toast.LENGTH_LONG).show();
+
+                        // Iniciar MainActivity
+                        Intent intent = new Intent(Register.this, MainActivity.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(Register.this, "ERROR. DATOS NO INSERTADOS", Toast.LENGTH_LONG).show();
+                    }
+                }
             }
         });
 
