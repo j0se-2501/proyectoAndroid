@@ -2,6 +2,7 @@ package com.example.proyectotocho;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,21 +23,11 @@ import java.util.List;
 public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHolder> {
     private List<Producto> productos;
     private Context context;
-
-    private ImageButton botonFav;
-
-    private ImageButton botonComprar;
-
-    private boolean fav=false;
-
     View view;
 
     public ProductoAdapter(Context context, List<Producto> productos) {
         this.context = context;
         this.productos = productos;
-        this.botonFav = botonFav;
-        this.botonComprar = botonComprar;
-        this.fav = fav;
     }
 
     @NonNull
@@ -53,20 +44,32 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        final boolean[] fav = {false};
         Producto producto = productos.get(position);
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM favoritos WHERE id_usuario = ? AND id_producto = ?", new String[]{String.valueOf(1),String.valueOf(producto.getId())});
+
 
         holder.textViewNombre.setText(producto.getNombre());
         holder.textViewDescripcion.setText(producto.getDescripcion());
         holder.textViewPrecio.setText(producto.getPrecio());
         ImageButton botonFav = view.findViewById(R.id.botonFavNo);
-        // Cargar la imagen desde el recurso Drawable
+        if (cursor!=null && cursor.getCount() > 0) {
+            botonFav.setImageResource(R.drawable.fav_si);
+            fav[0] =true;
+        } else fav[0] =false;
+        cursor.close();
+        db.close();
+            // Cargar la imagen desde el recurso Drawable
         int resourceId = context.getResources().getIdentifier(producto.getImagenUrl(), "drawable", context.getPackageName());
         botonFav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!fav) {
+                if (!fav[0]) {
                     botonFav.setImageResource(R.drawable.fav_si);
-                    fav=true;
+                    fav[0] =true;
 
                     DbHelper dbHelper = new DbHelper(context);
                     SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -88,7 +91,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
                 }
                 else {
                     botonFav.setImageResource(R.drawable.fav_no);
-                    fav=false;
+                    fav[0] =false;
 
                     DbHelper dbHelper = new DbHelper(context);
                     SQLiteDatabase db = dbHelper.getWritableDatabase();
