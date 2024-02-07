@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,13 +31,15 @@ public class ActivityPerfil extends AppCompatActivity {
         DbHelper dbHelper = new DbHelper(this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         TextView userNameTextView = findViewById(R.id.userEmailTextView);
+        TextView userAddressTextView = findViewById(R.id.userEmailTextView2); // TextView para la dirección
 
         try {
             Log.e("uwu LLEGO AL TRY",String.valueOf(userId));
 
-            Cursor cursor = db.rawQuery("SELECT nombre FROM usuarios WHERE id = ?", new String[]{userId});
-            if (cursor.moveToFirst()) {
+            Cursor cursor = db.rawQuery("SELECT nombre, direccion FROM usuarios WHERE id = ?", new String[]{userId});            if (cursor.moveToFirst()) {
                 String nombreuser = cursor.getString(0);
+                String direccion = cursor.getString(1);
+                userAddressTextView.setText("Direccion: "+ direccion);
                 userNameTextView.setText("Bienvenido, " + nombreuser + ".");
                 Log.e("uwu", "Nombre del usuario: " + nombreuser);
             } else {
@@ -59,6 +62,16 @@ public class ActivityPerfil extends AppCompatActivity {
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType("image/*");
                 startActivityForResult(intent, PICK_IMAGE_REQUEST);
+            }
+        });
+        Button btnEditProfile = findViewById(R.id.button); // Asegúrate de tener este botón en tu layout
+        btnEditProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(ActivityPerfil.this, EditarPerfilActivity.class);
+                intent.putExtra("USER_ID", userId);
+                startActivity(intent);
             }
         });
     }
