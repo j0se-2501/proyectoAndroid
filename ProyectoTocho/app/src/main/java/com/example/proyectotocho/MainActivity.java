@@ -65,9 +65,11 @@ public class MainActivity extends AppCompatActivity {
                         // Si el usuario es admin, iniciar AdminActivity
                         Intent adminIntent = new Intent(MainActivity.this, AdminActivity.class);
                         startActivity(adminIntent);
+                        userId=1;
                     } else {
                         // Si el usuario no es admin, validar en la base de datos
                         userId = validarUsuario(correo, contrasena);
+                        Log.e("uwu", String.valueOf(userId));
                         if (userId != -1) {
                             // Si las credenciales son correctas, iniciar UserActivity
                             Log.e("uwu despeus de validar",String.valueOf(userId));
