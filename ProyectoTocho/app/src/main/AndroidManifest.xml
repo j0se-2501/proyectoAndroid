@@ -21,6 +21,9 @@
             android:name=".VistaPorCategoria"
             android:exported="false" />
         <activity
+            android:name=".VistaPorFavoritos"
+            android:exported="false" />
+        <activity
             android:name=".InvitadoActivity"
             android:exported="false" />
         <activity

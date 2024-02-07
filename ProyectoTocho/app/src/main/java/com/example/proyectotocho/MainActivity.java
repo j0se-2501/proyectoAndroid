@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     private Button registrarboton;
     private Button login;
     private Button invitadoboton;
+
+    public static int userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(adminIntent);
                     } else {
                         // Si el usuario no es admin, validar en la base de datos
-                        int userId = validarUsuario(correo, contrasena);
+                        userId = validarUsuario(correo, contrasena);
                         if (userId != -1) {
                             // Si las credenciales son correctas, iniciar UserActivity
                             Log.e("uwu despeus de validar",String.valueOf(userId));

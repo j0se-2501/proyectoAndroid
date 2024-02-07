@@ -53,7 +53,18 @@ public class UserActivity extends AppCompatActivity {
         }
 
 
+        Button buttonFavoritos = findViewById(R.id.buttonFavoritos);
+        // Configurar OnClickListener para cada botón
 
+
+        buttonFavoritos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentFavoritos = new Intent(UserActivity.this, VistaPorFavoritos.class);
+                startActivity(intentFavoritos);
+
+            }
+        });
 
 
 
@@ -64,7 +75,7 @@ public class UserActivity extends AppCompatActivity {
 
         Button buttonPerfil = findViewById(R.id.buttonPerfil);
         // Configurar OnClickListener para cada botón
-        ImageButton motorButton = findViewById(R.id.imageButton);
+
 
         buttonPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +87,7 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
+        ImageButton motorButton = findViewById(R.id.imageButton);
         motorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
