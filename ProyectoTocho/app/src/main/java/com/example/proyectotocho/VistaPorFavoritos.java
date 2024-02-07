@@ -33,7 +33,8 @@ private Button btnComprar;
         // Configurar el RecyclerView
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        id_usuario = String.valueOf(1);
+        Log.e("uwu", String.valueOf(MainActivity.userId));
+        id_usuario = String.valueOf(MainActivity.userId);
         adapter = new ProductoAdapter(this, obtenerFavoritos(id_usuario));
         recyclerView.setAdapter(adapter);
 

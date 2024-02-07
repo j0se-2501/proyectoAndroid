@@ -49,7 +49,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
 
         DbHelper dbHelper = new DbHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM favoritos WHERE id_usuario = ? AND id_producto = ?", new String[]{String.valueOf(1),String.valueOf(producto.getId())});
+        Cursor cursor = db.rawQuery("SELECT * FROM favoritos WHERE id_usuario = ? AND id_producto = ?", new String[]{String.valueOf(MainActivity.userId),String.valueOf(producto.getId())});
 
 
         holder.textViewNombre.setText(producto.getNombre());
@@ -75,7 +75,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
                     SQLiteDatabase db = dbHelper.getWritableDatabase();
                     // Crea un objeto ContentValues para insertar los datos en la tabla "favoritos"
                     ContentValues values = new ContentValues();
-                    values.put("id_usuario", 1);
+                    values.put("id_usuario", MainActivity.userId);
                     values.put("id_producto", producto.getId());
                     // Inserta el nuevo producto en la tabla "piezas"
                     long newRowId = db.insert("favoritos", null, values);
@@ -97,7 +97,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
                     SQLiteDatabase db = dbHelper.getWritableDatabase();
                     // Define la condición de eliminación
                     String whereClause = "id_usuario = ? AND id_producto = ?";
-                    String[] whereArgs = { "1", String.valueOf(producto.getId()) };
+                    String[] whereArgs = { String.valueOf(MainActivity.userId), String.valueOf(producto.getId()) };
 
                     // Elimina el producto de la tabla "piezas"
                     int numRowsDeleted = db.delete("favoritos", whereClause, whereArgs);
