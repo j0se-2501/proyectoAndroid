@@ -4,16 +4,18 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -56,6 +58,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
         holder.textViewDescripcion.setText(producto.getDescripcion());
         holder.textViewPrecio.setText(producto.getPrecio());
         ImageButton botonFav = view.findViewById(R.id.botonFavNo);
+        ImageButton botonComprar = view.findViewById(R.id.btnComprar);
         if (cursor!=null && cursor.getCount() > 0) {
             botonFav.setImageResource(R.drawable.fav_si);
             fav[0] =true;
@@ -77,7 +80,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
                     ContentValues values = new ContentValues();
                     values.put("id_usuario", MainActivity.userId);
                     values.put("id_producto", producto.getId());
-                    // Inserta el nuevo producto en la tabla "piezas"
+                    // Inserta el nuevo producto en la tabla "favoritos"
                     long newRowId = db.insert("favoritos", null, values);
 
                     // Cierra la base de datos
@@ -99,7 +102,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
                     String whereClause = "id_usuario = ? AND id_producto = ?";
                     String[] whereArgs = { String.valueOf(MainActivity.userId), String.valueOf(producto.getId()) };
 
-                    // Elimina el producto de la tabla "piezas"
+                    // Elimina el producto de la tabla "favoritos"
                     int numRowsDeleted = db.delete("favoritos", whereClause, whereArgs);
 
                     db.close();
@@ -111,6 +114,68 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
                     }
 
                 };
+            }
+        });
+
+        botonComprar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                LayoutInflater inflater = LayoutInflater.from(context);
+                View dialogView = inflater.inflate(R.layout.dialog_cantidad, null);
+                builder.setView(dialogView);
+
+                final EditText etCantidad = dialogView.findViewById(R.id.etCantidad);
+                Button btnAgregar = dialogView.findViewById(R.id.btnAgregar);
+                Button btnCancelar = dialogView.findViewById(R.id.btnCancelar);
+
+                final AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+
+                btnAgregar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String cantidadStr = etCantidad.getText().toString().trim();
+                        if (!cantidadStr.isEmpty()) {
+                            int cantidad = Integer.parseInt(cantidadStr);
+                            if (cantidad >= 1 && cantidad <= 99) {
+                                DbHelper dbHelper = new DbHelper(context);
+                                SQLiteDatabase db = dbHelper.getWritableDatabase();
+                                // Crea un objeto ContentValues para insertar los datos en la tabla "carritos"
+                                ContentValues values = new ContentValues();
+                                values.put("id_usuario", MainActivity.userId);
+                                values.put("id_producto", producto.getId());
+                                values.put("cantidad_producto", cantidad);
+                                // Inserta el nuevo producto en la tabla "carritos"
+                                long newRowId = db.insert("carritos", null, values);
+
+                                // Cierra la base de datos
+                                db.close();
+
+
+
+                                if (newRowId != -1) {
+                                    alertDialog.dismiss();
+                                    Toast.makeText(context, "Añadido al carrito.", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(context, "Ya se encuentra en el carrito.", Toast.LENGTH_SHORT).show();
+                                }
+                                Log.d("MainActivity", "Cantidad seleccionada: " + cantidad);
+                            } else {
+                                etCantidad.setError("Ingrese una cantidad entre 1 y 99");
+                            }
+                        } else {
+                            etCantidad.setError("Ingrese una cantidad");
+                        }
+                    }
+                });
+
+                btnCancelar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                    }
+                });
             }
         });
         Glide.with(context)
