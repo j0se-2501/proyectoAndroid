@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 public class UserActivity extends AppCompatActivity {
 
@@ -91,8 +93,6 @@ public class UserActivity extends AppCompatActivity {
         motorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 intent.putExtra("CATEGORIA", "motor");
                 startActivity(intent);
             }
@@ -102,8 +102,6 @@ public class UserActivity extends AppCompatActivity {
         transmisionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 intent.putExtra("CATEGORIA", "transmision");
                 startActivity(intent);
             }
@@ -113,8 +111,6 @@ public class UserActivity extends AppCompatActivity {
         sobrealimentacionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 intent.putExtra("CATEGORIA", "sobrealimentacion");
                 startActivity(intent);
             }
@@ -124,8 +120,6 @@ public class UserActivity extends AppCompatActivity {
         neumaticosButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 intent.putExtra("CATEGORIA", "neumaticos");
                 startActivity(intent);
             }
@@ -135,8 +129,6 @@ public class UserActivity extends AppCompatActivity {
         llantasButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 intent.putExtra("CATEGORIA", "llantas");
                 startActivity(intent);
             }
@@ -146,8 +138,6 @@ public class UserActivity extends AppCompatActivity {
         suspensionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 intent.putExtra("CATEGORIA", "suspension");
                 startActivity(intent);
             }
@@ -157,8 +147,6 @@ public class UserActivity extends AppCompatActivity {
         frenosButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 intent.putExtra("CATEGORIA", "frenos");
                 startActivity(intent);
             }
@@ -168,8 +156,6 @@ public class UserActivity extends AppCompatActivity {
         carroceriaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 intent.putExtra("CATEGORIA", "carroceria");
                 startActivity(intent);
             }
@@ -179,12 +165,24 @@ public class UserActivity extends AppCompatActivity {
         electronicaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 intent.putExtra("CATEGORIA", "electronica");
                 startActivity(intent);
             }
         });
+
+        // Obtener una referencia al DrawerLayout
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+
+        // Obtener una referencia al botón que abrirá el navigation drawer
+        Button drawerButton = findViewById(R.id.buttonAbrirDrawer);
+
+        // Configurar OnClickListener para el botón que abrirá el drawer
+        drawerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Abrir el navigation drawer
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
     }
-
-
 }
