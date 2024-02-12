@@ -32,6 +32,9 @@
             android:name=".VistaPorFavoritos"
             android:exported="false" />
         <activity
+            android:name=".VistaPorCarrito"
+            android:exported="false" />
+        <activity
             android:name=".InvitadoActivity"
             android:exported="false" />
         <activity

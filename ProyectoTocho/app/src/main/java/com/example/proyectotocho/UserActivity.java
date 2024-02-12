@@ -68,6 +68,19 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
+        Button buttonCarrito = findViewById(R.id.buttonCarrito);
+        // Configurar OnClickListener para cada botón
+
+
+        buttonCarrito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentCarrito = new Intent(UserActivity.this, VistaPorCarrito.class);
+                startActivity(intentCarrito);
+
+            }
+        });
+
 
 
                 // Mostrar el correo en un TextView
