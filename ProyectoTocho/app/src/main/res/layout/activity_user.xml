@@ -340,6 +340,16 @@
                 app:layout_constraintStart_toEndOf="@+id/imageButton9"
                 app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
+            <Button
+                android:id="@+id/buttonCarrito"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="50dp"
+                android:text="Carrito"
+                app:layout_constraintStart_toEndOf="@+id/imageButton9"
+                app:layout_constraintTop_toBottomOf="@+id/buttonFavoritos" />
+
     <Button
         android:id="@+id/buttonAbrirDrawer"
         android:layout_width="100dp"
