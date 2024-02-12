@@ -10,7 +10,7 @@ import android.widget.Button;
 
 public class AdminClientesActivity extends AppCompatActivity {
 
-    //comentario para actualizar
+    //comentario para actualizar.
 
     Intent intentClientes = getIntent();
 
