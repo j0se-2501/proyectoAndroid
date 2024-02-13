@@ -19,13 +19,13 @@ public class VistaPorCarrito extends AppCompatActivity {
     private static DbHelper dbHelper;
     private String id_usuario;
     private RecyclerView recyclerView;
-    public static ProductoAdapter adapter;
+    public static ProductoAdapterCarrito adapter;
 
 private Button btnComprar;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vista_por_categoria);
+        setContentView(R.layout.activity_vista_por_carrito);
         getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.color_notif_bar));
         dbHelper = new DbHelper(this);
 
@@ -34,7 +34,7 @@ private Button btnComprar;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         Log.e("uwu", String.valueOf(MainActivity.userId));
         id_usuario = String.valueOf(MainActivity.userId);
-        adapter = new ProductoAdapter(this, obtenerCarrito(id_usuario));
+        adapter = new ProductoAdapterCarrito(this, obtenerCarrito(id_usuario));
         recyclerView.setAdapter(adapter);
 
 
