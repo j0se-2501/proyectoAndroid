@@ -181,7 +181,18 @@ public class UserActivity extends AppCompatActivity {
         startActivity(intentfavoritos);
     }
 
-
+    public void onTiendaClick(MenuItem menuItem) {
+        Intent intenttienda = new Intent(UserActivity.this, UserActivity.class);
+        startActivity(intenttienda);
+    }
+    public void onCarritoClick(MenuItem menuItem) {
+        Intent intentCarrito = new Intent(UserActivity.this, VistaPorCarrito.class);
+        startActivity(intentCarrito);
+    }
+    public void onCerrarSesionClick(MenuItem menuItem) {
+        Intent intentCerrarSesion = new Intent(UserActivity.this, MainActivity.class);
+        startActivity(intentCerrarSesion);
+    }
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {

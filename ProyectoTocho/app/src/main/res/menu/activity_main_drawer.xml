@@ -5,19 +5,44 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/perfil"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/perfil"
             android:title="perfil"
             android:onClick="onProfileClick"/>
         <item
+            android:id="@+id/nav_tienda"
+            android:icon="@drawable/tienda"
+            android:title="Tienda"
+            android:onClick="onTiendaClick"
+            />
+        <item
             android:id="@+id/nav_favoritos"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/fav_si"
             android:title="Favoritos"
             android:onClick="onFavoritesClick"/>
+
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow"
-            />
+            android:id="@+id/nav_carrito"
+            android:icon="@drawable/carrito"
+            android:title="Carrito"
+            android:onClick="onCarritoClick"/>
+        <item
+            android:id="@+id/separator"
+            android:title=""
+            android:visible="true"/>
+        <item
+            android:id="@+id/separator1"
+            android:title=""
+            android:visible="true"/>
+        <item
+            android:id="@+id/separator2"
+            android:title=""
+            android:visible="true"/>
+        <item
+            android:id="@+id/nav_cerrarsesion"
+            android:icon="@drawable/cerrarsesion"
+            android:title="Cerrar sesion"
+            android:onClick="onCerrarSesionClick"/>
+
 
     </group>
 </menu>
