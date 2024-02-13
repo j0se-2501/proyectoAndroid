@@ -61,26 +61,10 @@ public class UserActivity extends AppCompatActivity {
             db.close();
         }*/
 
-        Button buttonFavoritos = findViewById(R.id.buttonFavoritos);
-
-        buttonFavoritos.setOnClickListener(view -> startActivity(new Intent(UserActivity.this, VistaPorFavoritos.class)));
-
-        buttonFavoritos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentFavoritos = new Intent(UserActivity.this, VistaPorFavoritos.class);
-                startActivity(intentFavoritos);
-
-            }
-        });
-
-
-        // Configurar OnClickListener para cada botón
 
 
 
 
-                // Mostrar el correo en un TextView
 
 
 
