@@ -50,22 +50,14 @@
                 android:id="@+id/imageView"
                 android:layout_width="92dp"
                 android:layout_height="84dp"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintHorizontal_bias="0.798"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/logo" />
 
-            <TextView
-                android:id="@+id/userEmailTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                android:text="User:"
-                android:textAlignment="textStart"
-                android:textColor="#000000"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toTopOf="parent" />
+
 
             <ImageButton
                 android:id="@+id/imageButton"
@@ -320,48 +312,33 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageButton9" />
 
             <Button
-                android:id="@+id/buttonPerfil"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="BotonPerfil"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.831"
-                app:layout_constraintStart_toEndOf="@+id/userEmailTextView"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
                 android:id="@+id/buttonFavoritos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="50dp"
                 android:text="Favoritos"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.035"
                 app:layout_constraintStart_toEndOf="@+id/imageButton9"
-                app:layout_constraintTop_toBottomOf="@+id/textView9" />
+                app:layout_constraintTop_toBottomOf="@+id/textView9"
+                app:layout_constraintVertical_bias="0.27" />
 
-            <Button
-                android:id="@+id/buttonCarrito"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="50dp"
-                android:text="Carrito"
-                app:layout_constraintStart_toEndOf="@+id/imageButton9"
-                app:layout_constraintTop_toBottomOf="@+id/buttonFavoritos" />
-
-    <Button
-        android:id="@+id/buttonAbrirDrawer"
-        android:layout_width="100dp"
-        android:layout_height="36dp"
-        android:layout_centerInParent="true"
-        android:text="Abrir Drawer"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonPerfil"
-        app:layout_constraintEnd_toStartOf="@+id/buttonPerfil"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/userEmailTextView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+            <ImageButton
+                android:id="@+id/buttonAbrirDrawer"
+                android:layout_width="72dp"
+                android:layout_height="54dp"
+                android:layout_marginStart="-10dp"
+                android:layout_centerInParent="true"
+                android:backgroundTint="@color/white"
+                android:scaleType="centerCrop"
+                android:text="Abrir Drawer"
+                app:layout_constraintBottom_toTopOf="@+id/imageButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.52"
+                app:srcCompat="@drawable/btn_hamburguesa" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -370,9 +347,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="240dp"
         android:layout_height="match_parent"
+        android:layout_gravity="start"
         android:background="@android:color/white"
-        android:gravity="start"
-        android:layout_gravity="start">
+        android:gravity="start">
 
         <!-- Contenido personalizado del cajón de navegación -->
         <include
@@ -388,9 +365,9 @@
             android:layout_gravity="start"
             android:fitsSystemWindows="true"
             app:headerLayout="@layout/nav_header_nav_drawer"
-            app:menu="@menu/activity_main_drawer"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:menu="@menu/activity_main_drawer" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
