@@ -1,5 +1,7 @@
 package com.example.proyectotocho;
 
+import static com.example.proyectotocho.MainActivity.userId;
+
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -164,13 +166,21 @@ public class UserActivity extends AppCompatActivity {
         Button drawerButton = findViewById(R.id.buttonAbrirDrawer);
 
         drawerButton.setOnClickListener(view -> drawerLayout.openDrawer(GravityCompat.START));
+
+
     }
 
     public void onProfileClick(MenuItem menuItem) {
         Intent intent = new Intent(UserActivity.this, ActivityPerfil.class);
-        intent.putExtra("USER_ID", "1234"); // Replace userId with the actual user ID variable
+        intent.putExtra("USER_ID", String.valueOf(userId)); // Replace userId with the actual user ID variable
         startActivity(intent);
     }
+
+    public void onFavoritesClick(MenuItem menuItem) {
+        Intent intentfavoritos = new Intent(UserActivity.this, VistaPorFavoritos.class);
+        startActivity(intentfavoritos);
+    }
+
 
     @Override
     public void onBackPressed() {
@@ -180,4 +190,6 @@ public class UserActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
+
 }
