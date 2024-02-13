@@ -39,9 +39,9 @@ public class UserActivity extends AppCompatActivity {
         getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.color_notif_bar));
 
         String userId = getIntent().getStringExtra("USER_ID");
-        TextView userEmailTextView = findViewById(R.id.userEmailTextView);
 
-        DbHelper dbHelper = new DbHelper(this);
+
+        /*DbHelper dbHelper = new DbHelper(this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         try {
@@ -59,7 +59,7 @@ public class UserActivity extends AppCompatActivity {
             Log.e("owo", "Error en la consulta de la base de datos", e);
         } finally {
             db.close();
-        }
+        }*/
 
         Button buttonFavoritos = findViewById(R.id.buttonFavoritos);
 
@@ -74,18 +74,9 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
-        Button buttonCarrito = findViewById(R.id.buttonCarrito);
+
         // Configurar OnClickListener para cada botón
 
-
-        buttonCarrito.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentCarrito = new Intent(UserActivity.this, VistaPorCarrito.class);
-                startActivity(intentCarrito);
-
-            }
-        });
 
 
 
@@ -94,9 +85,8 @@ public class UserActivity extends AppCompatActivity {
 
 
 
-        Button buttonPerfil = findViewById(R.id.buttonPerfil);
 
-        buttonPerfil.setOnClickListener(view -> startActivity(intentPerfil.putExtra("USER_ID", userId)));
+
 
         ImageButton motorButton = findViewById(R.id.imageButton);
 
@@ -163,7 +153,7 @@ public class UserActivity extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.drawer_layout);
 
-        Button drawerButton = findViewById(R.id.buttonAbrirDrawer);
+        ImageButton drawerButton = findViewById(R.id.buttonAbrirDrawer);
 
         drawerButton.setOnClickListener(view -> drawerLayout.openDrawer(GravityCompat.START));
 
