@@ -1,18 +1,26 @@
 package com.example.proyectotocho;
 
+import static com.example.proyectotocho.MainActivity.userId;
+
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +41,7 @@ public class VistaPorCarrito extends AppCompatActivity {
 
     private static TextView precioFinal;
     private Button btnComprar;
-
+    private DrawerLayout drawerLayout;
     Context context=this;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,8 +103,47 @@ public class VistaPorCarrito extends AppCompatActivity {
                 }
             }
         });
+        drawerLayout = findViewById(R.id.drawer_layout);
+
+        ImageButton drawerButton = findViewById(R.id.buttonAbrirDrawer);
+
+        drawerButton.setOnClickListener(view -> drawerLayout.openDrawer(GravityCompat.START));
+
 
     }
+
+    public void onProfileClick(MenuItem menuItem) {
+        Intent intent = new Intent(VistaPorCarrito.this, ActivityPerfil.class);
+        intent.putExtra("USER_ID", String.valueOf(userId)); // Replace userId with the actual user ID variable
+        startActivity(intent);
+    }
+
+    public void onFavoritesClick(MenuItem menuItem) {
+        Intent intentfavoritos = new Intent(VistaPorCarrito.this, VistaPorFavoritos.class);
+        startActivity(intentfavoritos);
+    }
+
+    public void onTiendaClick(MenuItem menuItem) {
+        Intent intenttienda = new Intent(VistaPorCarrito.this, UserActivity.class);
+        startActivity(intenttienda);
+    }
+    public void onCarritoClick(MenuItem menuItem) {
+        Intent intentCarrito = new Intent(VistaPorCarrito.this, VistaPorCarrito.class);
+        startActivity(intentCarrito);
+    }
+    public void onCerrarSesionClick(MenuItem menuItem) {
+        Intent intentCerrarSesion = new Intent(VistaPorCarrito.this, MainActivity.class);
+        startActivity(intentCerrarSesion);
+    }
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
 
     @Override
     protected void onResume() {
