@@ -1,14 +1,20 @@
 package com.example.proyectotocho;
 
+import static com.example.proyectotocho.MainActivity.userId;
+
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.core.content.ContextCompat;
@@ -22,6 +28,7 @@ public class VistaPorCategoria extends AppCompatActivity {
     private String categoriaSeleccionada;
     private RecyclerView recyclerView;
     public static ProductoAdapter adapter;
+    private DrawerLayout drawerLayout;
 
 private Button btnComprar;
 
@@ -45,8 +52,47 @@ private Button btnComprar;
         recyclerView.setAdapter(adapter);
 
 
+        drawerLayout = findViewById(R.id.drawer_layout);
+
+        ImageButton drawerButton = findViewById(R.id.buttonAbrirDrawer);
+
+        drawerButton.setOnClickListener(view -> drawerLayout.openDrawer(GravityCompat.START));
+
 
     }
+
+    public void onProfileClick(MenuItem menuItem) {
+        Intent intent = new Intent(VistaPorCategoria.this, ActivityPerfil.class);
+        intent.putExtra("USER_ID", String.valueOf(userId)); // Replace userId with the actual user ID variable
+        startActivity(intent);
+    }
+
+    public void onFavoritesClick(MenuItem menuItem) {
+        Intent intentfavoritos = new Intent(VistaPorCategoria.this, VistaPorFavoritos.class);
+        startActivity(intentfavoritos);
+    }
+
+    public void onTiendaClick(MenuItem menuItem) {
+        Intent intenttienda = new Intent(VistaPorCategoria.this, UserActivity.class);
+        startActivity(intenttienda);
+    }
+    public void onCarritoClick(MenuItem menuItem) {
+        Intent intentCarrito = new Intent(VistaPorCategoria.this, VistaPorCarrito.class);
+        startActivity(intentCarrito);
+    }
+    public void onCerrarSesionClick(MenuItem menuItem) {
+        Intent intentCerrarSesion = new Intent(VistaPorCategoria.this, MainActivity.class);
+        startActivity(intentCerrarSesion);
+    }
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
 
     @Override
     protected void onResume() {
