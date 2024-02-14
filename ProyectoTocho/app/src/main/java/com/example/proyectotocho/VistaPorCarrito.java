@@ -44,6 +44,8 @@ public class VistaPorCarrito extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     Context context=this;
 
+    ArrayList<Integer> idProductosEnCarrito = new ArrayList<Integer>();
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vista_por_carrito);
@@ -85,7 +87,7 @@ public class VistaPorCarrito extends AppCompatActivity {
                 values.put("fecha", currentDateAndTime);
 
                 values.put("direccion", consultarDireccion());
-                values.put("precio", String.valueOf(precioFinal.getText()));
+                values.put("precio", String.valueOf(precioFinalFloat));
 
                 // Inserta el nuevo producto en la tabla "piezas"
                 long newRowId = db.insert("pedidos", null, values);
@@ -95,12 +97,71 @@ public class VistaPorCarrito extends AppCompatActivity {
 
                 if (newRowId != -1) {
 
-                    Toast.makeText(context, "Pedido realizado.", Toast.LENGTH_SHORT).show();
+                    SQLiteDatabase db3 = dbHelper.getWritableDatabase();
 
-                } else {
+                    Cursor cursor3 = db3.rawQuery("SELECT id FROM pedidos WHERE id_usuario = ?;", new String[]{String.valueOf(MainActivity.userId)});
 
-                    Toast.makeText(context, "Error al realizar el pedido.", Toast.LENGTH_SHORT).show();
-                }
+                    if (cursor3 != null && cursor3.getCount() > 0) {
+                        cursor3.moveToLast();
+                        int idPedido = cursor3.getInt(0);
+
+                        SQLiteDatabase db2 = dbHelper.getWritableDatabase();
+
+                        Cursor cursor2 = db2.rawQuery("SELECT id_producto, cantidad_producto FROM carritos WHERE id_usuario = ?;", new String[]{String.valueOf(MainActivity.userId)});
+
+                        if (cursor2 != null && cursor2.getCount() > 0) {
+                            // Movemos el cursor a la primera fila
+                            cursor2.moveToFirst();
+                            ContentValues values2 = new ContentValues();
+                            long newRowId2;
+                            do {
+
+                                int id = cursor2.getInt(0);
+                                int cantidadProducto = cursor2.getInt(1);
+
+
+                                values2.put("id_pedido", String.valueOf(idPedido));
+
+                                values2.put("id_producto", String.valueOf(id));
+
+                                values2.put("cantidad_producto", cantidadProducto);
+
+                                newRowId2 = db2.insert("pedidos_a_piezas", null, values2);
+
+                            } while (cursor2.moveToNext());
+
+
+
+                            // Inserta el nuevo producto en la tabla "piezas"
+
+                            if (newRowId2 != -1){
+                                Toast.makeText(context, "Pedido realizado.", Toast.LENGTH_SHORT).show();
+                            } else {
+
+                                Toast.makeText(context, "Error al realizar el pedido.", Toast.LENGTH_SHORT).show();
+                            }
+
+                            // Cierra la base de datos
+
+
+
+
+                        }
+
+                        db2.close();
+                        }
+
+                    db3.close();
+
+                    }
+
+
+
+
+
+
+
+
             }
         });
         drawerLayout = findViewById(R.id.drawer_layout);
