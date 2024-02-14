@@ -1,5 +1,6 @@
 package com.example.proyectotocho;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -33,6 +34,8 @@ public class ProductoAdapterCarrito extends RecyclerView.Adapter<ProductoAdapter
 
     int cantidad;
 
+
+
     public ProductoAdapterCarrito(Context context, List<Producto> productos) {
         this.context = context;
         this.productos = productos;
@@ -51,7 +54,7 @@ public class ProductoAdapterCarrito extends RecyclerView.Adapter<ProductoAdapter
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         Producto producto = productos.get(position);
 
@@ -87,6 +90,7 @@ public class ProductoAdapterCarrito extends RecyclerView.Adapter<ProductoAdapter
                         Toast.makeText(context, "Eliminado del carrito.", Toast.LENGTH_SHORT).show();
                         productos.remove(position);
                         notifyItemRemoved(position);
+                        VistaPorCarrito.actualizarPrecioTotal();
                     } else {
                         Toast.makeText(context, "Error.", Toast.LENGTH_SHORT).show();
                     }
@@ -113,13 +117,44 @@ public class ProductoAdapterCarrito extends RecyclerView.Adapter<ProductoAdapter
                     // Comprueba si el texto ha cambiado desde el original
                     if ((!holder.editTextUnidades.getText().toString().equals(String.valueOf(cantidad)))&&!holder.editTextUnidades.getText().toString().isEmpty()) {
 
-                        if(Integer.parseInt(holder.editTextUnidades.getText().toString())<100){
+                        if((Integer.parseInt(holder.editTextUnidades.getText().toString())<100)&&(Integer.parseInt(holder.editTextUnidades.getText().toString())>0)){
+                            // Accede a la base de datos
+                            DbHelper dbHelper = new DbHelper(context);
+                            SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+
+
+                                ContentValues values = new ContentValues();
+                                values.put("cantidad_producto", holder.editTextUnidades.getText().toString());
+
+
+
+                                int numRowsUpdated = db.update("carritos", values, "id_usuario=? AND id_producto=?", new String[]{String.valueOf(MainActivity.userId), String.valueOf(producto.getId())});
+                            if (numRowsUpdated <1) {
+                                Toast.makeText(context, "Error.", Toast.LENGTH_SHORT).show();
+                            }
+                            db.close();
                             cantidad=Integer.parseInt(holder.editTextUnidades.getText().toString());
                             holder.textViewPrecioTotal.setText(String.valueOf(d.format(precio*cantidad)));
+                            VistaPorCarrito.actualizarPrecioTotal();
                         } else {
-                            cantidad=99;
-                            holder.editTextUnidades.setText("99");
+                            cantidad=1;
+                            DbHelper dbHelper = new DbHelper(context);
+                            SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+
+
+                            ContentValues values = new ContentValues();
+                            values.put("cantidad_producto", String.valueOf(cantidad));
+
+
+
+                            int numRowsUpdated = db.update("carritos", values, "id_usuario=? AND id_producto=?", new String[]{String.valueOf(MainActivity.userId), String.valueOf(producto.getId())});
+                            cursor.close();
+                            db.close();
+                            holder.editTextUnidades.setText("1");
                             holder.textViewPrecioTotal.setText(String.valueOf(d.format(precio*cantidad)));
+                            VistaPorCarrito.actualizarPrecioTotal();
                         }
 
                     }

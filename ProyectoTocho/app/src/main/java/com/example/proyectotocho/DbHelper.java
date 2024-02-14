@@ -23,6 +23,8 @@ public class DbHelper extends SQLiteOpenHelper {
             db.execSQL("CREATE TABLE IF NOT EXISTS categorias (id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT UNIQUE)");
             db.execSQL("CREATE TABLE IF NOT EXISTS piezas (id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, descripcion TEXT, precio REAL, stock INTEGER, imagen_url TEXT, categoria_id INTEGER, FOREIGN KEY (categoria_id) REFERENCES categorias(id))");
             db.execSQL("CREATE TABLE IF NOT EXISTS usuarios (id INTEGER PRIMARY KEY AUTOINCREMENT, correo TEXT UNIQUE, contrasena TEXT,nombre TEXT,direccion TEXT)");
+            db.execSQL("CREATE TABLE IF NOT EXISTS pedidos (id INTEGER PRIMARY KEY AUTOINCREMENT, id_usuario INTEGER , fecha TEXT, direccion TEXT, precio REAL, FOREIGN KEY (id_usuario) REFERENCES usuarios(id))");
+            db.execSQL("CREATE TABLE IF NOT EXISTS pedidos_a_piezas (id INTEGER PRIMARY KEY AUTOINCREMENT, id_pedido INTEGER, id_producto INTEGER, cantidad_producto INTEGER, FOREIGN KEY (id_pedido) REFERENCES pedido(id), FOREIGN KEY (id_producto) REFERENCES piezas(id))");
             db.execSQL("CREATE TABLE IF NOT EXISTS favoritos (id_usuario INTEGER, id_producto INTEGER, PRIMARY KEY (id_usuario, id_producto), FOREIGN KEY (id_usuario) REFERENCES usuarios(id), FOREIGN KEY (id_producto) REFERENCES piezas(id))");
             db.execSQL("CREATE TABLE IF NOT EXISTS carritos (id_usuario INTEGER, id_producto INTEGER, cantidad_producto INTEGER, PRIMARY KEY (id_usuario, id_producto), FOREIGN KEY (id_usuario) REFERENCES usuarios(id), FOREIGN KEY (id_producto) REFERENCES piezas(id))");
             db.execSQL("INSERT INTO categorias (id, nombre) VALUES ('1', 'motor')");

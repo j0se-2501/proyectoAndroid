@@ -4,13 +4,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,9 +20,13 @@ public class VistaPorCarrito extends AppCompatActivity {
     private static DbHelper dbHelper;
     private String id_usuario;
     private RecyclerView recyclerView;
+
     public static ProductoAdapterCarrito adapter;
 
-private Button btnComprar;
+    private static float precioFinalFloat;
+
+    private static TextView precioFinal;
+    private Button btnComprar;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +42,19 @@ private Button btnComprar;
         adapter = new ProductoAdapterCarrito(this, obtenerCarrito(id_usuario));
         recyclerView.setAdapter(adapter);
 
+        //precio final
+        precioFinalFloat=0;
+        precioFinal = findViewById(R.id.precioFinal);
+        btnComprar = findViewById(R.id.botonComprar);
 
+        actualizarPrecioTotal();
+
+        btnComprar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
 
     }
 
@@ -102,6 +119,23 @@ private Button btnComprar;
         }
 
         return productos;
+    }
+
+    public static void actualizarPrecioTotal(){
+
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT SUM(precio * cantidad_producto) AS precio_total\n" +
+                "FROM carritos\n" +
+                "JOIN piezas ON carritos.id_producto = piezas.id\n" +
+                "WHERE carritos.id_usuario = ?;\n", new String[]{String.valueOf(MainActivity.userId)});
+        if (cursor!=null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            precioFinalFloat = cursor.getInt(0);
+
+            precioFinal.setText("Precio total: "+String.valueOf(precioFinalFloat)+"€");
+        }
+        cursor.close();
+        db.close();
     }
 
 }
