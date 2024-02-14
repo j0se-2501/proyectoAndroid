@@ -1,5 +1,7 @@
 package com.example.proyectotocho;
 
+import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -12,7 +14,11 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class VistaPorCarrito extends AppCompatActivity {
@@ -27,6 +33,8 @@ public class VistaPorCarrito extends AppCompatActivity {
 
     private static TextView precioFinal;
     private Button btnComprar;
+
+    Context context=this;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +60,39 @@ public class VistaPorCarrito extends AppCompatActivity {
         btnComprar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
+
+                SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+                // Crea un objeto ContentValues para insertar los datos en la tabla "piezas"
+                ContentValues values = new ContentValues();
+                values.put("id_usuario", String.valueOf(MainActivity.userId));
+                // on below line we are creating and initializing
+                // variable for simple date format.
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss z");
+
+                // on below line we are creating a variable
+                // for current date and time and calling a simple date format in it.
+                String currentDateAndTime = sdf.format(new Date());
+                values.put("fecha", currentDateAndTime);
+
+                values.put("direccion", consultarDireccion());
+                values.put("precio", String.valueOf(precioFinal.getText()));
+
+                // Inserta el nuevo producto en la tabla "piezas"
+                long newRowId = db.insert("pedidos", null, values);
+
+                // Cierra la base de datos
+                db.close();
+
+                if (newRowId != -1) {
+
+                    Toast.makeText(context, "Pedido realizado.", Toast.LENGTH_SHORT).show();
+
+                } else {
+
+                    Toast.makeText(context, "Error al realizar el pedido.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -137,5 +177,18 @@ public class VistaPorCarrito extends AppCompatActivity {
         cursor.close();
         db.close();
     }
+
+    public static String consultarDireccion() {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT direccion FROM usuarios WHERE id=?;", new String[]{String.valueOf(MainActivity.userId)});
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            return String.valueOf(cursor.getInt(0));
+        }
+        cursor.close();
+        db.close();
+        return null;
+    }
+
 
 }
