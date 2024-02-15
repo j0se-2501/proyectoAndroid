@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -30,6 +31,7 @@ public class ActivityPerfil extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.color_notif_bar));
 
         imageViewPerfil = findViewById(R.id.imageViewPerfil);
         // Dentro de onCreate en la clase UserActivity
