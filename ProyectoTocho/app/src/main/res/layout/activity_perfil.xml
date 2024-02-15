@@ -16,76 +16,127 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/imagen_fondo_silueta"
+            android:layout_width="391dp"
+            android:layout_height="408dp"
+            android:layout_centerInParent="true"
+            android:layout_margin="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:alpha="0.10"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.876"
+            app:srcCompat="@drawable/logo" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="423dp"
+            android:layout_height="233dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/side_nav_bar" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageView"
+            android:layout_width="92dp"
+            android:layout_height="84dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/radius2"
+            app:layout_constraintHorizontal_bias="0.798"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo" />
+
         <ImageButton
             android:id="@+id/buttonAbrirDrawer"
-            android:layout_width="72dp"
-            android:layout_height="54dp"
+            android:layout_width="48dp"
+            android:layout_height="42dp"
             android:layout_centerInParent="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
             android:backgroundTint="@color/white"
             android:scaleType="centerCrop"
             android:text="Abrir Drawer"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewPerfil"
+            app:layout_constraintEnd_toStartOf="@+id/imageView"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.52"
+            app:layout_constraintVertical_bias="0.085"
             app:srcCompat="@drawable/btn_hamburguesa" />
-    <ImageView
-        android:id="@+id/imageViewPerfil"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:clickable="true"
-        android:scaleType="centerCrop"
-        android:src="@drawable/default_profile_image"
-        app:layout_constraintBottom_toTopOf="@+id/userEmailTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/userEmailTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="User:"
-        android:textAlignment="textStart"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewPerfil" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageViewPerfil"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="148dp"
+            android:clickable="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/default_profile_image"
+            android:adjustViewBounds="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.513"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/radius"/>
 
-    <TextView
-        android:id="@+id/userEmailTextView2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:text="Direccion:"
-        android:textAlignment="textStart"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userEmailTextView" />
+        <TextView
+            android:id="@+id/userEmailTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="28dp"
+            android:text="User:"
+            android:textAlignment="textStart"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewPerfil" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button"
-        android:layout_width="144dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="156dp"
-        android:text="Editar Perfil"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textColor="#FFFFFF"
-        android:background="#FF000000"
-        android:backgroundTint="@null"
-        app:layout_constraintTop_toBottomOf="@+id/userEmailTextView2" />
+        <TextView
+            android:id="@+id/userEmailTextView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:text="Direccion:"
+            android:textAlignment="textStart"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userEmailTextView" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button"
+            android:layout_width="144dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="208dp"
+            android:background="#FF000000"
+            android:backgroundTint="@null"
+            android:text="Editar Perfil"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userEmailTextView2" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="240dp"
@@ -108,6 +159,7 @@
             android:layout_gravity="start"
             android:fitsSystemWindows="true"
             app:headerLayout="@layout/nav_header_nav_drawer"
+            app:shapeAppearanceOverlay="@style/radius"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/activity_main_drawer" />
