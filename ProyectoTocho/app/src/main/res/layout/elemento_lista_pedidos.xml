@@ -133,7 +133,7 @@
         android:layout_marginStart="100dp"/>
 
     <ImageButton
-        android:id="@+id/btnComprar"
+        android:id="@+id/btnVerProductos"
         android:layout_width="80px"
         android:layout_height="80px"
         android:layout_marginTop="20dp"
