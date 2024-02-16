@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:backgroundTint="#FFFFFF">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="170dp" />
+
+    <!-- TextView para mostrar "Pedido nº" -->
+    <TextView
+        android:id="@+id/textViewPedidoNumero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pedido nº:"
+        android:textSize="16sp"
+
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline"
+        android:layout_marginStart="20dp"/>
+
+    <!-- TextView para mostrar el número de pedido -->
+    <TextView
+        android:id="@+id/textViewNumeroPedido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aquí se recoge la ID del pedido"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline"
+        android:layout_marginStart="100dp"/>
+
+    <!-- TextView para mostrar "Dirección" -->
+    <TextView
+        android:id="@+id/textViewDireccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dirección:"
+        android:textSize="16sp"
+        android:layout_marginTop="2dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewNumeroPedido"
+        android:layout_marginStart="20dp"/>
+
+    <!-- TextView para mostrar la dirección -->
+    <TextView
+        android:id="@+id/textViewDireccionContenido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aquí se recoge la dirección"
+        android:textSize="16sp"
+        android:layout_marginTop="2dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewNumeroPedido"
+        android:layout_marginStart="100dp"/>
+
+    <!-- TextView para mostrar "Precio" -->
+    <TextView
+        android:id="@+id/textViewPrecio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginTop="2dp"
+        android:text="Precio:"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewDireccionContenido"
+        android:layout_marginStart="20dp"/>
+
+    <!-- TextView para mostrar el precio -->
+    <TextView
+        android:id="@+id/textViewPrecioContenido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aquí se recoge el precio"
+        android:textSize="16sp"
+        android:layout_marginTop="2dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewDireccionContenido"
+        android:layout_marginStart="100dp"/>
+
+    <!-- TextView para mostrar "Fecha" -->
+    <TextView
+        android:id="@+id/textViewFecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha:"
+        android:textSize="16sp"
+        android:layout_marginTop="2dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewPrecioContenido"
+        android:layout_marginStart="20dp"/>
+
+    <!-- TextView para mostrar la fecha -->
+    <TextView
+        android:id="@+id/textViewFechaContenido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aquí se recoge la fecha"
+        android:textSize="16sp"
+        android:layout_marginTop="2dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewPrecioContenido"
+        android:layout_marginStart="100dp"/>
+
+    <ImageButton
+        android:id="@+id/btnComprar"
+        android:layout_width="80px"
+        android:layout_height="80px"
+        android:layout_marginTop="20dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFecha"
+        app:srcCompat="@drawable/carrito"
+        android:layout_marginStart="20dp"/>
+
+    <View
+        android:id="@+id/borderView"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

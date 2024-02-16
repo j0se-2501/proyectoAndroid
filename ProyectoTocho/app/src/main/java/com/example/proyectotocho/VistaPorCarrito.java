@@ -136,6 +136,8 @@ public class VistaPorCarrito extends AppCompatActivity {
 
                             if (newRowId2 != -1){
                                 Toast.makeText(context, "Pedido realizado.", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(context, VistaPorPedidos.class);
+                                startActivity(intent);
                             } else {
 
                                 Toast.makeText(context, "Error al realizar el pedido.", Toast.LENGTH_SHORT).show();
