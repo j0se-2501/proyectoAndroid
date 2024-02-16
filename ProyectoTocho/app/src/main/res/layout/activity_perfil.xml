@@ -122,7 +122,20 @@
             app:layout_constraintTop_toBottomOf="@+id/userEmailTextView" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button"
+            android:id="@+id/buttonPedidos"
+            android:layout_width="144dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="208dp"
+            android:background="#FF000000"
+            android:backgroundTint="@null"
+            android:text="Ver Pedidos"
+            android:textColor="#FFFFFF"
+            android:layout_marginHorizontal="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userEmailTextView2" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonEditarPerfil"
             android:layout_width="144dp"
             android:layout_height="51dp"
             android:layout_marginTop="208dp"
@@ -130,9 +143,8 @@
             android:backgroundTint="@null"
             android:text="Editar Perfil"
             android:textColor="#FFFFFF"
+            android:layout_marginHorizontal="40dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/userEmailTextView2" />
 
 

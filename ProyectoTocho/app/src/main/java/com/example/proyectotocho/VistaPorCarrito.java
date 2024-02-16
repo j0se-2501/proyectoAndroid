@@ -9,10 +9,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
@@ -20,6 +22,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +39,8 @@ public class VistaPorCarrito extends AppCompatActivity {
     private RecyclerView recyclerView;
 
     public static ProductoAdapterCarrito adapter;
+
+    int idPedido;
 
     private static float precioFinalFloat;
 
@@ -103,7 +108,7 @@ public class VistaPorCarrito extends AppCompatActivity {
 
                     if (cursor3 != null && cursor3.getCount() > 0) {
                         cursor3.moveToLast();
-                        int idPedido = cursor3.getInt(0);
+                        idPedido = cursor3.getInt(0);
 
                         SQLiteDatabase db2 = dbHelper.getWritableDatabase();
 
@@ -135,9 +140,47 @@ public class VistaPorCarrito extends AppCompatActivity {
                             // Inserta el nuevo producto en la tabla "piezas"
 
                             if (newRowId2 != -1){
+
                                 Toast.makeText(context, "Pedido realizado.", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(context, VistaPorPedidos.class);
-                                startActivity(intent);
+                                SQLiteDatabase db4 = dbHelper.getWritableDatabase();
+                                // Realizar la consulta DELETE
+                                db4.delete("carritos", "id_usuario = ?", new String[]{String.valueOf(MainActivity.userId)});
+
+                                // Cerrar la base de datos
+                                db4.close();
+                                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                                LayoutInflater inflater = LayoutInflater.from(context);
+                                View dialogView = inflater.inflate(R.layout.dialog_compra_realizada, null);
+                                builder.setView(dialogView);
+
+                                TextView infoCompra = dialogView.findViewById(R.id.textViewInfoCompra);
+                                TextView numPedido = dialogView.findViewById(R.id.textViewNumeroPedido);
+                                numPedido.setText("Nº de pedido: "+idPedido+".");
+
+                                Button btnAceptar = dialogView.findViewById(R.id.btnAceptar);
+                                Button btnVerPedidos = dialogView.findViewById(R.id.btnVerPedidos);
+
+                                final AlertDialog alertDialog = builder.create();
+                                alertDialog.show();
+
+                                btnVerPedidos.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent intent = new Intent(context, VistaPorPedidos.class);
+                                        startActivity(intent);
+                                    }
+                                });
+
+                                btnAceptar.setOnClickListener(new View.OnClickListener() {
+
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent intent = new Intent(context, UserActivity.class);
+                                        startActivity(intent);
+                                    }
+                                });
+
+
                             } else {
 
                                 Toast.makeText(context, "Error al realizar el pedido.", Toast.LENGTH_SHORT).show();
