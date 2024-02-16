@@ -15,6 +15,9 @@
         android:theme="@style/Theme.ProyectoTocho"
         tools:targetApi="31">
         <activity
+            android:name=".VistaPorPedidos"
+            android:exported="false" />
+        <activity
             android:name=".nav_drawer"
             android:exported="false"
             android:label="@string/title_activity_nav_drawer"
