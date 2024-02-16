@@ -25,6 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import java.text.DecimalFormat;
+import java.util.Iterator;
 import java.util.List;
 
 public class ProductoAdapterCarrito extends RecyclerView.Adapter<ProductoAdapterCarrito.ViewHolder> {
@@ -88,10 +89,23 @@ public class ProductoAdapterCarrito extends RecyclerView.Adapter<ProductoAdapter
 
                     if (numRowsDeleted > 0) {
                         Toast.makeText(context, "Eliminado del carrito.", Toast.LENGTH_SHORT).show();
-                        productos.remove(position);
-                        notifyItemRemoved(position);
-                        VistaPorCarrito.actualizarPrecioTotal();
-                    } else {
+
+                        Iterator<Producto> iterator = productos.iterator();
+                        int index = 0;
+                        while (iterator.hasNext()) {
+                            Producto producto = iterator.next();
+                            if (index == position) {
+                                iterator.remove();
+                                notifyItemRemoved(position);
+                                VistaPorCarrito.actualizarPrecioTotal();
+                                break;
+                            }
+                            index++;
+                        }
+
+                        notifyDataSetChanged();
+                    }
+                    else {
                         Toast.makeText(context, "Error.", Toast.LENGTH_SHORT).show();
                     }
 

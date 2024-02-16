@@ -14,39 +14,36 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
+        <!-- Botón del Drawer -->
+        <ImageButton
+            android:id="@+id/buttonAbrirDrawer"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/white"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/btn_hamburguesa" />
+
+        <!-- Logo -->
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="74dp"
             android:layout_height="70dp"
-            android:layout_marginTop="10dp"
-
-            android:layout_marginEnd="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/logopng" />
-        <ImageButton
-            android:id="@+id/buttonAbrirDrawer"
-            android:layout_width="64dp"
-            android:layout_height="40dp"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="@color/white"
-            android:scaleType="centerCrop"
-            android:text="Abrir Drawer"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.52"
-            app:srcCompat="@drawable/btn_hamburguesa" />
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="590dp"
-        android:layout_marginTop="80dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/precioFinal"
+        android:layout_height="585dp"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView

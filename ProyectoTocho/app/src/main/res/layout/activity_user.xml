@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="0.15"
-        android:scaleType="centerCrop"
+        android:scaleType="fitCenter"
         android:visibility="visible"
         app:srcCompat="@drawable/logo" />
 
@@ -25,13 +25,15 @@
         android:layout_height="match_parent">
 
         <!-- Botón del Drawer -->
+        <!-- Botón del Drawer -->
         <ImageButton
             android:id="@+id/buttonAbrirDrawer"
-            android:layout_width="64dp"
-            android:layout_height="40dp"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
             android:backgroundTint="@color/white"
             android:scaleType="centerCrop"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/btn_hamburguesa" />
@@ -41,7 +43,8 @@
             android:id="@+id/imageView"
             android:layout_width="74dp"
             android:layout_height="70dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/logopng" />
