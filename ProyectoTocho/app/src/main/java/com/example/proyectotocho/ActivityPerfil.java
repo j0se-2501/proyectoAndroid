@@ -72,13 +72,23 @@ public class ActivityPerfil extends AppCompatActivity {
                 startActivityForResult(intent, PICK_IMAGE_REQUEST);
             }
         });
-        Button btnEditProfile = findViewById(R.id.button); // Asegúrate de tener este botón en tu layout
+        Button btnEditProfile = findViewById(R.id.buttonEditarPerfil); // Asegúrate de tener este botón en tu layout
+        Button btnPedidos = findViewById(R.id.buttonPedidos);
         btnEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent intent = new Intent(ActivityPerfil.this, EditarPerfilActivity.class);
                 intent.putExtra("USER_ID", userId);
+                startActivity(intent);
+            }
+        });
+
+        btnPedidos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(ActivityPerfil.this, VistaPorPedidos.class);
                 startActivity(intent);
             }
         });
