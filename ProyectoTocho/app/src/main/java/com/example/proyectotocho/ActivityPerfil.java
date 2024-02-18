@@ -21,6 +21,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.proyectotocho.R;
+import com.google.android.material.navigation.NavigationView;
 
 public class ActivityPerfil extends AppCompatActivity {
 
@@ -40,15 +41,23 @@ public class ActivityPerfil extends AppCompatActivity {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         TextView userNameTextView = findViewById(R.id.userEmailTextView);
         TextView userAddressTextView = findViewById(R.id.userEmailTextView2); // TextView para la dirección
-
+        drawerLayout = findViewById(R.id.drawer_layout);
+        //Cosas necesarias par apillar el correo y el nombre del user
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        TextView drawenombreTextView = headerView.findViewById(R.id.drawernombre);
+        TextView drawercorreoTextView = headerView.findViewById(R.id.drawercorreo);
         try {
             Log.e("uwu LLEGO AL TRY",String.valueOf(userId));
 
-            Cursor cursor = db.rawQuery("SELECT nombre, direccion FROM usuarios WHERE id = ?", new String[]{userId});            if (cursor.moveToFirst()) {
+            Cursor cursor = db.rawQuery("SELECT nombre, direccion , correo FROM usuarios WHERE id = ?", new String[]{userId});            if (cursor.moveToFirst()) {
                 String nombreuser = cursor.getString(0);
                 String direccion = cursor.getString(1);
+                String correo = cursor.getString(2);
                 userAddressTextView.setText("Direccion: "+ direccion);
                 userNameTextView.setText("Bienvenido, " + nombreuser + ".");
+                drawercorreoTextView.setText(correo);
+                drawenombreTextView.setText(nombreuser);
                 Log.e("uwu", "Nombre del usuario: " + nombreuser);
             } else {
                 Log.e("uwu", "Cursor vacío, no se encontró el usuario con ID: " + userId);
@@ -60,7 +69,11 @@ public class ActivityPerfil extends AppCompatActivity {
             db.close();
         }
 
-// Mostrar el nombre de usuario en algún TextView
+
+
+
+
+
 
 
         imageViewPerfil.setOnClickListener(new View.OnClickListener() {
