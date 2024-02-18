@@ -33,14 +33,6 @@
             app:layout_constraintVertical_bias="0.876"
             app:srcCompat="@drawable/logo" />
 
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="423dp"
-            android:layout_height="233dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/side_nav_bar" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageView"

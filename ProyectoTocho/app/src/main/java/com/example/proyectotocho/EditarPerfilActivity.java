@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class EditarPerfilActivity extends AppCompatActivity {
 
-    private EditText editTextName, editTextAddress;
+    private EditText editTextName, editTextAddress, editTextPassword;
     private Button btnSave;
     private String userId;
 
@@ -23,6 +23,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
         userId = getIntent().getStringExtra("USER_ID");
         editTextName = findViewById(R.id.editTextName);
         editTextAddress = findViewById(R.id.editTextAddress);
+        editTextPassword=findViewById(R.id.editTextPassword);
         btnSave = findViewById(R.id.btnSave);
 
         btnSave.setOnClickListener(new View.OnClickListener() {
@@ -30,18 +31,20 @@ public class EditarPerfilActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String newName = editTextName.getText().toString();
                 String newAddress = editTextAddress.getText().toString();
-                updateUserData(userId, newName, newAddress);
+                String newPassword=editTextPassword.getText().toString();
+                updateUserData(userId, newName, newAddress, newPassword);
             }
         });
     }
 
-    private void updateUserData(String userId, String newName, String newAddress) {
+    private void updateUserData(String userId, String newName, String newAddress, String newPassword) {
         DbHelper dbHelper = new DbHelper(this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put("nombre", newName);
         values.put("direccion", newAddress);
+        values.put("contrasena", newPassword);
 
         int rowsAffected = db.update("usuarios", values, "id = ?", new String[]{userId});
         if (rowsAffected > 0) {
