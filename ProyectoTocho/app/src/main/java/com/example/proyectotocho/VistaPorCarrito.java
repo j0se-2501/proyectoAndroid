@@ -27,6 +27,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -210,7 +212,39 @@ public class VistaPorCarrito extends AppCompatActivity {
             }
         });
         drawerLayout = findViewById(R.id.drawer_layout);
+        //Cosas necesarias par apillar el correo y el nombre del user
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        TextView drawenombreTextView = headerView.findViewById(R.id.drawernombre);
+        TextView drawercorreoTextView = headerView.findViewById(R.id.drawercorreo);
 
+// Ahora puedes usar drawenombreTextView y drawercorreoTextView para establecer los textos
+
+        DbHelper dbHelper = new DbHelper(this);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        id_usuario = String.valueOf(MainActivity.userId);
+
+        try {
+            Log.e("drawer",String.valueOf(id_usuario));
+
+            Cursor cursor = db.rawQuery("SELECT nombre, correo FROM usuarios WHERE id = ?", new String[]{id_usuario});            if (cursor.moveToFirst()) {
+                String nombreuser = cursor.getString(0);
+                String correo = cursor.getString(1);
+                drawercorreoTextView.setText(correo);
+                drawenombreTextView.setText(nombreuser );
+
+                Log.e("drawer", "Nombre del usuario: " + nombreuser);
+                Log.e("drawer", "Correo del usuario: " + correo);
+
+            } else {
+                Log.e("drawer", "Cursor vacío, no se encontró el usuario con ID: " + id_usuario);
+            }
+            cursor.close();
+        } catch (Exception e) {
+            Log.e("drawer", "Error en la consulta de la base de datos", e);
+        } finally {
+            db.close();
+        }
         ImageButton drawerButton = findViewById(R.id.buttonAbrirDrawer);
 
         drawerButton.setOnClickListener(view -> drawerLayout.openDrawer(GravityCompat.START));
