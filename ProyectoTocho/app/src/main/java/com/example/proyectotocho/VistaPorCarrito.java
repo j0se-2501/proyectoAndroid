@@ -370,7 +370,8 @@ public class VistaPorCarrito extends AppCompatActivity {
         Cursor cursor = db.rawQuery("SELECT direccion FROM usuarios WHERE id=?;", new String[]{String.valueOf(MainActivity.userId)});
         if (cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();
-            return String.valueOf(cursor.getInt(0));
+            Log.e("owouwuowouwu", String.valueOf(cursor.getString(0) ));
+            return String.valueOf(cursor.getString(0));
         }
         cursor.close();
         db.close();
