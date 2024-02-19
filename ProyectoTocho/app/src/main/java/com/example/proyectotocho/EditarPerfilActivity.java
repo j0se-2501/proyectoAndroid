@@ -1,6 +1,7 @@
 package com.example.proyectotocho;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
@@ -25,6 +26,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
         editTextAddress = findViewById(R.id.editTextAddress);
         editTextPassword=findViewById(R.id.editTextPassword);
         btnSave = findViewById(R.id.btnSave);
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.color_notif_bar));
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,9 +44,9 @@ public class EditarPerfilActivity extends AppCompatActivity {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put("nombre", newName);
-        values.put("direccion", newAddress);
-        values.put("contrasena", newPassword);
+        if (!newName.isEmpty()) values.put("nombre", newName);
+        if (!newAddress.isEmpty()) values.put("direccion", newAddress);
+        if (!newPassword.isEmpty()) values.put("contrasena", newPassword);
 
         int rowsAffected = db.update("usuarios", values, "id = ?", new String[]{userId});
         if (rowsAffected > 0) {

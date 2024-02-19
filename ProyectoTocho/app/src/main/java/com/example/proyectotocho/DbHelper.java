@@ -66,7 +66,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
 
 
-            db.execSQL("INSERT INTO usuarios (correo, contrasena) VALUES ('admin@admin.com', 'admin')");
+            db.execSQL("INSERT INTO usuarios (correo, contrasena, nombre, direccion) VALUES ('admin@admin.com', 'admin', 'admin', 'Calle Falsa 123')");
         } catch (SQLException e) {
             e.printStackTrace();
         }
