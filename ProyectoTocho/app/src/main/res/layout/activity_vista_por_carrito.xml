@@ -42,7 +42,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:layout_height="535dp"
         app:layout_constraintBottom_toTopOf="@+id/precioFinal"
         app:layout_constraintStart_toStartOf="parent" />
 
